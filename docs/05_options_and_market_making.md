@@ -21,8 +21,36 @@ Sell an at-the-money 3-month call at 25 % implied volatility and delta-hedge at 
 | 25 % | 0.00 | +0.01 / 0.55 | +0.03 / 1.18 |
 | 30 % | −1.00 | −0.99 / 0.66 | −0.96 / 1.42 |
 
+![Delta-hedged short call: P&L vs realised volatility](../figures/fig7_delta_hedge.svg)
+
 A hedged option's P&L is driven by realised versus implied variance (≈ ½Γ S²(σ_impl² − σ_real²)dt per step for the seller); more frequent hedging
 tightens the distribution. Selling options harvests the variance risk premium — with crash risk attached.
+
+### On real data: the variance risk premium, 2010–2017
+
+Public data only: the VIX (30-day implied volatility of S&P 500 options, from FRED) and daily prices of an S&P 500 ETF. One position a month, 96 in total,
+opened at the last close of a month and expiring at the last close of the next. Two ways to sell volatility, both fixed before running:
+
+- **Short a variance swap** (model-free): strike = VIX², settled on realised variance; reported per $1 of vega notional, (σ_impl² − σ_real²) / (2σ_impl), in vol points.
+- **Short an at-the-money straddle, delta-hedged daily** at the implied vol (a trader does not know future realised vol, unlike the simulation above).
+
+Implied volatility averaged 17.4 %, realised 13.0 %; implied was above realised in 83 of 96 months.
+
+| 2010–2017, monthly | Short variance swap (vol points per $1 vega) | Short straddle, delta-hedged (% of underlying) |
+|---|---|---|
+| Mean per month | +3.19 | +0.87 % |
+| Annualised Sharpe ratio | 2.00 | 3.45 |
+| Months with a profit | 86 % | 86 % |
+| Skewness | **−3.3** | −0.8 |
+| Worst months | Aug 2011 −28.3, Aug 2015 −23.2, May 2010 −12.0 | Aug 2011 −2.4 %, Jun 2016 −1.7 %, May 2010 −1.5 % |
+
+![Cumulative P&L of selling variance monthly](../figures/fig12_real_short_vol.svg)
+
+- The premium is real — but one bad month (August 2011) cost about nine average months, and the skew is the classic shape of selling insurance.
+  The variance swap is more convex than the straddle (double the realised vol, four times the variance), hence the fatter tail.
+- **These Sharpe ratios are overstated**: the VIX is a variance-swap rate and usually sits a point or more above at-the-money implied vol (skew), so the straddle's premium is too high;
+  bid-ask spreads, hedging costs and margin are ignored; and 2010–2017 was a calm window — 2008, February 2018 (when a popular short-volatility product lost over 90 % in a day)
+  and March 2020 are outside it. Short-volatility backtests are especially sensitive to the period chosen.
 
 ## Probability (each answer checked by simulation)
 

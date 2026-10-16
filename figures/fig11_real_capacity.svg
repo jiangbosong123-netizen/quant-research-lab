@@ -1,0 +1,51 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='720' height='420' viewBox='0 0 720 420'>
+<rect width='100%' height='100%' fill='white'/>
+<text x='360.0' y='24' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold'>Trading cost vs capital per side: assumed liquidity vs the stocks P1 actually traded</text>
+<line x1='70' x2='696' y1='364.0' y2='364.0' stroke='#edf2f7'/>
+<text x='62' y='368.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>0%</text>
+<line x1='70' x2='696' y1='257.3' y2='257.3' stroke='#edf2f7'/>
+<text x='62' y='261.3' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>0.5%</text>
+<line x1='70' x2='696' y1='150.7' y2='150.7' stroke='#edf2f7'/>
+<text x='62' y='154.7' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>1%</text>
+<line x1='70' x2='696' y1='44.0' y2='44.0' stroke='#edf2f7'/>
+<text x='62' y='48.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>1.5%</text>
+<line x1='70.0' x2='70.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='70.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>100k</text>
+<line x1='226.5' x2='226.5' y1='364' y2='368' stroke='#4a5568'/>
+<text x='226.5' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>1m</text>
+<line x1='383.0' x2='383.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='383.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>10m</text>
+<line x1='539.5' x2='539.5' y1='364' y2='368' stroke='#4a5568'/>
+<text x='539.5' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>100m</text>
+<line x1='696.0' x2='696.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='696.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>1bn</text>
+<rect x='70' y='44' width='626' height='320' fill='none' stroke='#a0aec0'/>
+<line x1='70' x2='696' y1='300.1' y2='300.1' stroke='#c53030' stroke-dasharray='5,4'/>
+<text x='74' y='295.1' text-anchor='start' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#c53030' stroke='white' stroke-width='3' paint-order='stroke'>half of P1's gross return, 2012-17</text>
+<path d='M70.0,354.0 L109.1,353.1 L148.3,351.9 L187.4,350.3 L226.5,348.1 L265.6,345.2 L304.8,341.4 L343.9,336.3 L383.0,329.6 L422.1,320.5 L461.3,308.5 L500.4,292.4 L539.5,270.9 L578.6,242.3 L617.8,204.2 L656.9,153.3 L696.0,85.5' fill='none' stroke='#718096' stroke-width='2' stroke-dasharray='6,4'/>
+<path d='M70.0,356.3 L109.1,355.7 L148.3,354.9 L187.4,353.9 L226.5,352.5 L265.6,350.7 L304.8,348.3 L343.9,345.0 L383.0,340.7 L422.1,334.9 L461.3,327.2 L500.4,316.9 L539.5,303.2 L578.6,284.9 L617.8,260.5 L656.9,228.0 L696.0,184.7' fill='none' stroke='#dd6b20' stroke-width='2'/>
+<circle cx='70.0' cy='356.3' r='3.5' fill='#dd6b20'/>
+<circle cx='109.1' cy='355.7' r='3.5' fill='#dd6b20'/>
+<circle cx='148.3' cy='354.9' r='3.5' fill='#dd6b20'/>
+<circle cx='187.4' cy='353.9' r='3.5' fill='#dd6b20'/>
+<circle cx='226.5' cy='352.5' r='3.5' fill='#dd6b20'/>
+<circle cx='265.6' cy='350.7' r='3.5' fill='#dd6b20'/>
+<circle cx='304.8' cy='348.3' r='3.5' fill='#dd6b20'/>
+<circle cx='343.9' cy='345.0' r='3.5' fill='#dd6b20'/>
+<circle cx='383.0' cy='340.7' r='3.5' fill='#dd6b20'/>
+<circle cx='422.1' cy='334.9' r='3.5' fill='#dd6b20'/>
+<circle cx='461.3' cy='327.2' r='3.5' fill='#dd6b20'/>
+<circle cx='500.4' cy='316.9' r='3.5' fill='#dd6b20'/>
+<circle cx='539.5' cy='303.2' r='3.5' fill='#dd6b20'/>
+<circle cx='578.6' cy='284.9' r='3.5' fill='#dd6b20'/>
+<circle cx='617.8' cy='260.5' r='3.5' fill='#dd6b20'/>
+<circle cx='656.9' cy='228.0' r='3.5' fill='#dd6b20'/>
+<circle cx='696.0' cy='184.7' r='3.5' fill='#dd6b20'/>
+<rect x='82.0' y='49' width='12' height='12' fill='#718096'/>
+<text x='100.0' y='59' font-family='Helvetica, Arial, sans-serif' font-size='12'>assumed liquidity (Part 4 demo, 24.5 % turnover)</text>
+<rect x='82.0' y='67' width='12' height='12' fill='#dd6b20'/>
+<text x='100.0' y='77' font-family='Helvetica, Arial, sans-serif' font-size='12'>P1's actual trades 2012-2017 (~20 % turnover)</text>
+<text x='383.0' y='394' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>capital per side ($, log scale)</text>
+<text transform='translate(16,204.0) rotate(-90)' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>monthly trading cost (share of capital per side)</text>
+<text x='70' y='412' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#718096'>Impact from each traded stock's own 60-day dollar volume and 63-day volatility (square-root law, Y = 0.7); spreads assumed (4 / 8 bp).</text>
+</svg>

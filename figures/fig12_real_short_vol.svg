@@ -1,0 +1,32 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='720' height='420' viewBox='0 0 720 420'>
+<rect width='100%' height='100%' fill='white'/>
+<text x='360.0' y='24' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold'>Selling one-month S&amp;P 500 variance at the VIX, 2010-2017: cumulative P&amp;L</text>
+<line x1='70' x2='696' y1='364.0' y2='364.0' stroke='#edf2f7'/>
+<text x='62' y='368.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>0</text>
+<line x1='70' x2='696' y1='284.0' y2='284.0' stroke='#edf2f7'/>
+<text x='62' y='288.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>100</text>
+<line x1='70' x2='696' y1='204.0' y2='204.0' stroke='#edf2f7'/>
+<text x='62' y='208.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>200</text>
+<line x1='70' x2='696' y1='124.0' y2='124.0' stroke='#edf2f7'/>
+<text x='62' y='128.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>300</text>
+<line x1='70' x2='696' y1='44.0' y2='44.0' stroke='#edf2f7'/>
+<text x='62' y='48.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>400</text>
+<line x1='70.0' x2='70.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='70.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2010</text>
+<line x1='226.5' x2='226.5' y1='364' y2='368' stroke='#4a5568'/>
+<text x='226.5' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2012</text>
+<line x1='383.0' x2='383.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='383.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2014</text>
+<line x1='539.5' x2='539.5' y1='364' y2='368' stroke='#4a5568'/>
+<text x='539.5' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2016</text>
+<line x1='696.0' x2='696.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='696.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2018</text>
+<rect x='70' y='44' width='626' height='320' fill='none' stroke='#a0aec0'/>
+<line x1='70' x2='696' y1='364.0' y2='364.0' stroke='#a0aec0' stroke-dasharray='5,4'/>
+<path d='M76.5,360.4 L83.0,355.4 L89.6,349.1 L96.1,347.0 L102.6,356.6 L109.1,351.7 L115.6,342.5 L122.2,338.3 L128.7,332.1 L135.2,324.4 L141.7,319.9 L148.2,312.1 L154.8,307.3 L161.3,302.3 L167.8,300.5 L174.3,295.2 L180.9,292.3 L187.4,293.0 L193.9,292.1 L200.4,314.7 L206.9,312.7 L213.5,303.4 L220.0,303.4 L226.5,297.1 L233.0,289.2 L239.5,283.0 L246.1,278.4 L252.6,277.3 L259.1,274.7 L265.6,272.0 L272.1,269.6 L278.7,263.6 L285.2,259.7 L291.7,256.2 L298.2,253.6 L304.8,250.4 L311.3,245.6 L317.8,244.7 L324.3,240.1 L330.8,241.2 L337.4,239.0 L343.9,239.6 L350.4,234.2 L356.9,232.1 L363.4,227.0 L370.0,224.1 L376.5,221.0 L383.0,218.2 L389.5,217.4 L396.0,213.5 L402.6,210.7 L409.1,209.8 L415.6,206.4 L422.1,203.0 L428.6,201.9 L435.2,196.7 L441.7,194.7 L448.2,195.9 L454.7,190.9 L461.2,192.4 L467.8,190.4 L474.3,184.0 L480.8,184.4 L487.3,180.1 L493.9,177.4 L500.4,175.3 L506.9,170.9 L513.4,189.5 L519.9,185.0 L526.5,178.2 L533.0,175.8 L539.5,177.3 L546.0,182.4 L552.5,181.0 L559.1,175.6 L565.6,172.8 L572.1,169.5 L578.6,173.3 L585.1,168.6 L591.7,164.8 L598.2,165.2 L604.7,161.2 L611.2,157.0 L617.8,153.6 L624.3,149.2 L630.8,145.4 L637.3,142.3 L643.8,139.1 L650.4,136.9 L656.9,134.8 L663.4,131.5 L669.9,130.7 L676.4,127.6 L683.0,124.9 L689.5,122.6 L696.0,119.1' fill='none' stroke='#2b6cb0' stroke-width='2'/>
+<rect x='82.0' y='49' width='12' height='12' fill='#2b6cb0'/>
+<text x='100.0' y='59' font-family='Helvetica, Arial, sans-serif' font-size='12'>short variance swap, monthly</text>
+<text x='383.0' y='394' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>year</text>
+<text transform='translate(16,204.0) rotate(-90)' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>cumulative P&amp;L (vol points per $1 vega)</text>
+<text x='70' y='412' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#718096'>86 % of months positive, Sharpe 2.0, skewness -3.3; worst: Aug 2011 (-28), Aug 2015 (-23). 2008, 2018 and 2020 are outside this window.</text>
+</svg>

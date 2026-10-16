@@ -1,0 +1,44 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='720' height='420' viewBox='0 0 720 420'>
+<rect width='100%' height='100%' fill='white'/>
+<text x='360.0' y='24' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold'>False-positive rate under a zero signal (one-sided t &gt; 1.96)</text>
+<line x1='70' x2='696' y1='350.0' y2='350.0' stroke='#edf2f7'/>
+<text x='62' y='354.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>0.0%</text>
+<line x1='70' x2='696' y1='248.0' y2='248.0' stroke='#edf2f7'/>
+<text x='62' y='252.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2.0%</text>
+<line x1='70' x2='696' y1='146.0' y2='146.0' stroke='#edf2f7'/>
+<text x='62' y='150.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>4.0%</text>
+<line x1='70' x2='696' y1='44.0' y2='44.0' stroke='#edf2f7'/>
+<text x='62' y='48.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>6.0%</text>
+<rect x='90.9' y='226.3' width='51.2' height='123.7' fill='#2b6cb0'/>
+<text x='116.5' y='222.3' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>2.4%</text>
+<rect x='146.5' y='201.3' width='51.2' height='148.7' fill='#dd6b20'/>
+<text x='172.1' y='197.3' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>2.9%</text>
+<rect x='202.2' y='167.4' width='51.2' height='182.6' fill='#2f855a'/>
+<text x='227.8' y='163.4' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>3.6%</text>
+<text x='174.3' y='368' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11'>IC autocorrelation 0.0</text>
+<rect x='299.5' y='217.9' width='51.2' height='132.1' fill='#2b6cb0'/>
+<text x='325.1' y='213.9' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>2.6%</text>
+<rect x='355.2' y='152.9' width='51.2' height='197.1' fill='#dd6b20'/>
+<text x='380.8' y='148.9' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>3.9%</text>
+<rect x='410.8' y='144.7' width='51.2' height='205.3' fill='#2f855a'/>
+<text x='436.4' y='140.7' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>4.0%</text>
+<text x='383.0' y='368' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11'>IC autocorrelation 0.3</text>
+<rect x='508.2' y='219.4' width='51.2' height='130.6' fill='#2b6cb0'/>
+<text x='533.8' y='215.4' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>2.6%</text>
+<rect x='563.8' y='90.4' width='51.2' height='259.6' fill='#dd6b20'/>
+<text x='589.4' y='86.4' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>5.1%</text>
+<rect x='619.5' y='123.6' width='51.2' height='226.4' fill='#2f855a'/>
+<text x='645.1' y='119.6' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>4.4%</text>
+<text x='591.7' y='368' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11'>IC autocorrelation 0.5</text>
+<line x1='70' x2='696' y1='350.0' y2='350.0' stroke='#4a5568'/>
+<line x1='70' x2='696' y1='222.5' y2='222.5' stroke='#c53030' stroke-dasharray='5,4'/>
+<text x='692' y='217.5' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#c53030' stroke='white' stroke-width='3' paint-order='stroke'>nominal 2.5 %</text>
+<rect x='82' y='50' width='12' height='12' fill='#2b6cb0'/>
+<text x='100' y='60' font-family='Helvetica, Arial, sans-serif' font-size='12'>EWC</text>
+<rect x='252' y='50' width='12' height='12' fill='#dd6b20'/>
+<text x='270' y='60' font-family='Helvetica, Arial, sans-serif' font-size='12'>Newey-West lag 4</text>
+<rect x='422' y='50' width='12' height='12' fill='#2f855a'/>
+<text x='440' y='60' font-family='Helvetica, Arial, sans-serif' font-size='12'>Newey-West lag 12</text>
+<text transform='translate(16,197.0) rotate(-90)' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>rejection rate</text>
+<text x='70' y='410' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#718096'>20,000 simulated IC series of 185 months per cell.</text>
+</svg>

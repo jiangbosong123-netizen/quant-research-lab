@@ -1,0 +1,49 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='720' height='420' viewBox='0 0 720 420'>
+<rect width='100%' height='100%' fill='white'/>
+<text x='360.0' y='24' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold'>Capacity: monthly net return vs capital per side (assumed liquidity)</text>
+<line x1='70' x2='696' y1='364.0' y2='364.0' stroke='#edf2f7'/>
+<text x='62' y='368.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>-0.5%</text>
+<line x1='70' x2='696' y1='257.3' y2='257.3' stroke='#edf2f7'/>
+<text x='62' y='261.3' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>0%</text>
+<line x1='70' x2='696' y1='150.7' y2='150.7' stroke='#edf2f7'/>
+<text x='62' y='154.7' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>0.5%</text>
+<line x1='70' x2='696' y1='44.0' y2='44.0' stroke='#edf2f7'/>
+<text x='62' y='48.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>1%</text>
+<line x1='70.0' x2='70.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='70.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>100k</text>
+<line x1='226.5' x2='226.5' y1='364' y2='368' stroke='#4a5568'/>
+<text x='226.5' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>1m</text>
+<line x1='383.0' x2='383.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='383.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>10m</text>
+<line x1='539.5' x2='539.5' y1='364' y2='368' stroke='#4a5568'/>
+<text x='539.5' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>100m</text>
+<line x1='696.0' x2='696.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='696.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>1bn</text>
+<rect x='70' y='44' width='626' height='320' fill='none' stroke='#a0aec0'/>
+<line x1='70' x2='696' y1='52.8' y2='52.8' stroke='#2f855a' stroke-dasharray='5,4'/>
+<text x='692' y='47.8' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#2f855a' stroke='white' stroke-width='3' paint-order='stroke'>before trading costs</text>
+<line x1='70' x2='696' y1='257.3' y2='257.3' stroke='#c53030' stroke-dasharray='5,4'/>
+<text x='692' y='252.3' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#c53030' stroke='white' stroke-width='3' paint-order='stroke'>zero</text>
+<path d='M70.0,62.8 L109.1,63.8 L148.2,65.0 L187.4,66.6 L226.5,68.7 L265.6,71.6 L304.8,75.4 L343.9,80.5 L383.0,87.2 L422.1,96.3 L461.2,108.4 L500.4,124.4 L539.5,145.9 L578.6,174.5 L617.8,212.6 L656.9,263.5 L696.0,331.3' fill='none' stroke='#2b6cb0' stroke-width='2'/>
+<circle cx='70.0' cy='62.8' r='3.5' fill='#2b6cb0'/>
+<circle cx='109.1' cy='63.8' r='3.5' fill='#2b6cb0'/>
+<circle cx='148.2' cy='65.0' r='3.5' fill='#2b6cb0'/>
+<circle cx='187.4' cy='66.6' r='3.5' fill='#2b6cb0'/>
+<circle cx='226.5' cy='68.7' r='3.5' fill='#2b6cb0'/>
+<circle cx='265.6' cy='71.6' r='3.5' fill='#2b6cb0'/>
+<circle cx='304.8' cy='75.4' r='3.5' fill='#2b6cb0'/>
+<circle cx='343.9' cy='80.5' r='3.5' fill='#2b6cb0'/>
+<circle cx='383.0' cy='87.2' r='3.5' fill='#2b6cb0'/>
+<circle cx='422.1' cy='96.3' r='3.5' fill='#2b6cb0'/>
+<circle cx='461.2' cy='108.4' r='3.5' fill='#2b6cb0'/>
+<circle cx='500.4' cy='124.4' r='3.5' fill='#2b6cb0'/>
+<circle cx='539.5' cy='145.9' r='3.5' fill='#2b6cb0'/>
+<circle cx='578.6' cy='174.5' r='3.5' fill='#2b6cb0'/>
+<circle cx='617.8' cy='212.6' r='3.5' fill='#2b6cb0'/>
+<circle cx='656.9' cy='263.5' r='3.5' fill='#2b6cb0'/>
+<circle cx='696.0' cy='331.3' r='3.5' fill='#2b6cb0'/>
+<rect x='82.0' y='337' width='12' height='12' fill='#2b6cb0'/>
+<text x='100.0' y='347' font-family='Helvetica, Arial, sans-serif' font-size='12'>net of square-root-law costs and 1 %/yr borrow</text>
+<text x='383.0' y='394' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>capital per side ($, log scale)</text>
+<text transform='translate(16,204.0) rotate(-90)' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>monthly net return</text>
+</svg>

@@ -31,6 +31,8 @@ Pure noise (no signal at all), overlapping 3-month labels, deeper trees (depth 6
 | 5 | IC **+0.218** (26.3) | +0.004 (0.5) | −0.016 (−1.5) |
 | 6 | IC **+0.209** (28.7) | +0.014 (1.6) | +0.019 (2.3) |
 
+![Out-of-sample IC on pure noise by validation scheme](../figures/fig4_cv_leakage.svg)
+
 - Persistent characteristics plus overlapping labels put a near-copy of every test row in the training set; deep trees memorise it.
   An IC of 0.21 on pure noise is several times stronger than the best real equity signals.
 - **Purging** removes training samples whose label windows overlap the test block; an **embargo** drops a few more after it (López de Prado 2018, ch. 7).
@@ -51,3 +53,38 @@ Thirty hyper-parameter sets, keep the best walk-forward result, then test it on 
   (Bailey & López de Prado 2014). It is conservative: in simulation the best of 100 skill-less strategies "looks significant" 99 % of the time and passes the deflated test 0 % of the time.
 - The 30 configurations here are similar to each other, so the inflation is mild; real research tries far more varied things.
   That is why the research process in Part 1 records **every** test in an append-only registry.
+
+## 4. On real stocks: does ML beat a simple composite?
+
+The same tools on real data: the stocks and signal of Part 2's real-data section (about 650 US large/mid caps a month, free data, a survivorship-biased universe),
+signal months 2012-07 → 2017-11. The original test had already seen these years, so this is **practice, not evidence**; 2018 onwards is not touched.
+
+- **13 features**, each converted to a cross-sectional percentile every month: the eight anomaly components of the surviving signal
+  plus beta, size, 12-1 momentum, volatility and one-month reversal. **Label**: the percentile of the next holding-period return.
+- **Walk-forward with purging on real dates**: a signal formed at the end of month *m* is only fully labelled at the start of month *m + 2*, so test month *t*
+  trains on months ≤ *t* − 2 (expanding window, at least 24 months, refitted every month). Test period: 2014-08 → 2017-11, 40 months.
+- **Fixed before running and not tuned afterwards**: ridge with α = 10; boosted trees with the synthetic demo's "shallow" settings
+  (80 rounds, learning rate 0.1, depth 3, ≥ 50 rows per leaf, 80 % row subsampling).
+- Each model's top 50 / bottom 50 are traded like the lab's portfolio (0.2 % one-way, 1 %/yr borrow). The composite's gross returns match Part 2's equal-weight
+  portfolio month by month (to within 5 × 10⁻⁷).
+
+| 40 test months | Mean IC (Newey–West t) | Months with IC > 0 | Long–short Sharpe, before / after costs | Monthly turnover | Rank corr. with composite |
+|---|---|---|---|---|---|
+| **Composite** (equal-weight, no fitting) | **+0.025** (1.58) | 60 % | 1.07 / **0.83** | 80 % | 1 |
+| Ridge, 13 features | −0.014 (−0.78) | 45 % | −0.30 / −0.71 | 176 % | 0.33 |
+| Boosted trees, 13 features | +0.006 (0.38) | 55 % | 0.33 / −0.21 | 244 % | 0.24 |
+| Ridge, 8 components only \* | −0.010 (−0.81) | 48 % | −0.20 / −0.58 | 103 % | 0.51 |
+| Boosted trees, 8 components only \* | +0.002 (0.18) | 50 % | 0.01 / −0.55 | 204 % | 0.30 |
+
+\* A diagnostic added after seeing the first three rows (and labelled as such in the code), to separate "the extra price features hurt" from "fitting itself hurt".
+
+![Real stocks: walk-forward ML vs the equal-weight composite](../figures/fig10_real_ml.svg)
+
+- **The fitted models lost to simply averaging the eight components**, with or without the price features. Monthly ICs have a standard deviation of 0.07–0.12
+  around a mean of 0.01–0.02, so two to five years of data cannot pin down the weights; equal weighting is shrinkage to a sensible prior and has no estimation error
+  (the same reason the 1/N portfolio is hard to beat — DeMiguel, Garlappi & Uppal 2009). Relationships also drift between the training and test years.
+- **Turnover finishes the job**: the trees split most often on one-month reversal and momentum, which change every month, so they trade two to three times as much as the composite.
+- **Do not over-read it**: with 40 months the standard error of the mean IC is about 0.015, so the gaps are one to two and a half standard errors.
+  The defensible statement is "no evidence that ML helped here, and it traded far more", not "ML does not work".
+  Where ML does work in the literature (Gu, Kelly & Xiu 2020) it has decades of data, hundreds of features and the whole market.
+

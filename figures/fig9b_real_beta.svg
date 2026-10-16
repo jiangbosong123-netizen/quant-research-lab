@@ -1,0 +1,32 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='720' height='420' viewBox='0 0 720 420'>
+<rect width='100%' height='100%' fill='white'/>
+<text x='360.0' y='24' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold'>Real data: ex-ante market beta of the portfolio each month</text>
+<line x1='70' x2='696' y1='364.0' y2='364.0' stroke='#edf2f7'/>
+<text x='62' y='368.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>-0.6</text>
+<line x1='70' x2='696' y1='284.0' y2='284.0' stroke='#edf2f7'/>
+<text x='62' y='288.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>-0.4</text>
+<line x1='70' x2='696' y1='204.0' y2='204.0' stroke='#edf2f7'/>
+<text x='62' y='208.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>-0.2</text>
+<line x1='70' x2='696' y1='124.0' y2='124.0' stroke='#edf2f7'/>
+<text x='62' y='128.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>0</text>
+<line x1='70' x2='696' y1='44.0' y2='44.0' stroke='#edf2f7'/>
+<text x='62' y='48.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>0.2</text>
+<line x1='70.0' x2='70.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='70.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2012</text>
+<line x1='278.7' x2='278.7' y1='364' y2='368' stroke='#4a5568'/>
+<text x='278.7' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2014</text>
+<line x1='487.3' x2='487.3' y1='364' y2='368' stroke='#4a5568'/>
+<text x='487.3' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2016</text>
+<line x1='696.0' x2='696.0' y1='364' y2='368' stroke='#4a5568'/>
+<text x='696.0' y='382' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>2018</text>
+<rect x='70' y='44' width='626' height='320' fill='none' stroke='#a0aec0'/>
+<line x1='70' x2='696' y1='124.0' y2='124.0' stroke='#a0aec0' stroke-dasharray='5,4'/>
+<path d='M139.6,234.4 L148.2,311.2 L156.9,306.3 L165.6,269.0 L174.3,253.3 L183.0,190.4 L191.7,168.0 L200.4,112.5 L209.1,129.7 L217.8,142.0 L226.5,133.5 L235.2,101.8 L243.9,163.0 L252.6,162.8 L261.3,117.6 L270.0,94.9 L278.7,104.6 L287.4,117.4 L296.1,100.2 L304.8,142.7 L313.4,139.8 L322.1,193.5 L330.8,217.8 L339.5,245.0 L348.2,266.6 L356.9,248.7 L365.6,305.0 L374.3,254.3 L383.0,208.4 L391.7,230.3 L400.4,241.9 L409.1,249.3 L417.8,251.1 L426.5,237.0 L435.2,233.8 L443.9,198.1 L452.6,183.8 L461.2,206.0 L469.9,209.1 L478.6,239.5 L487.3,227.3 L496.0,218.7 L504.7,261.6 L513.4,284.4 L522.1,278.8 L530.8,237.4 L539.5,254.4 L548.2,276.2 L556.9,261.9 L565.6,209.8 L574.3,207.8 L583.0,209.0 L591.7,228.6 L600.4,204.2 L609.1,136.3 L617.8,100.6 L626.4,69.1 L635.1,98.5 L643.8,130.5 L652.5,212.7 L661.2,174.8 L669.9,162.5 L678.6,135.4 L687.3,160.5 L696.0,89.9' fill='none' stroke='#2b6cb0' stroke-width='2'/>
+<path d='M139.6,123.5 L148.2,124.1 L156.9,125.0 L165.6,125.3 L174.3,126.0 L183.0,126.2 L191.7,125.6 L200.4,123.5 L209.1,122.9 L217.8,123.0 L226.5,123.4 L235.2,123.4 L243.9,123.9 L252.6,123.9 L261.3,123.9 L270.0,124.0 L278.7,124.0 L287.4,124.0 L296.1,124.0 L304.8,124.3 L313.4,124.5 L322.1,125.4 L330.8,125.5 L339.5,125.4 L348.2,126.0 L356.9,126.0 L365.6,126.1 L374.3,124.5 L383.0,124.6 L391.7,124.4 L400.4,123.6 L409.1,123.5 L417.8,123.5 L426.5,123.2 L435.2,123.1 L443.9,123.2 L452.6,123.5 L461.2,123.8 L469.9,124.0 L478.6,124.6 L487.3,124.6 L496.0,125.5 L504.7,126.4 L513.4,125.4 L522.1,126.0 L530.8,126.2 L539.5,126.2 L548.2,125.8 L556.9,125.4 L565.6,125.2 L574.3,124.3 L583.0,125.4 L591.7,126.0 L600.4,125.3 L609.1,126.3 L617.8,126.3 L626.4,125.0 L635.1,124.5 L643.8,124.3 L652.5,122.9 L661.2,122.3 L669.9,122.1 L678.6,122.5 L687.3,122.3 L696.0,123.1' fill='none' stroke='#dd6b20' stroke-width='2'/>
+<rect x='82.0' y='49' width='12' height='12' fill='#2b6cb0'/>
+<text x='100.0' y='59' font-family='Helvetica, Arial, sans-serif' font-size='12'>A: equal weight</text>
+<rect x='82.0' y='67' width='12' height='12' fill='#dd6b20'/>
+<text x='100.0' y='77' font-family='Helvetica, Arial, sans-serif' font-size='12'>C: risk model + cost-aware</text>
+<text x='383.0' y='394' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>year</text>
+<text transform='translate(16,204.0) rotate(-90)' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>ex-ante beta</text>
+</svg>

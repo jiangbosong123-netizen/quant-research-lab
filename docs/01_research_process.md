@@ -40,11 +40,40 @@ Before any data for a hypothesis was downloaded, a pre-registration file was com
   its file hashes are checked by an automated test, and any change means a new version.
 - Portfolio-level strategies (cross-asset, event-driven) use the same idea on monthly net excess returns ("returns framework", also validated on synthetic data).
 
+### How the test was validated (`quantlab/factor_test.py`)
+
+The public version of the test (`factor_test()`: IC, quintiles, net long–short spread, EWC and Newey–West, coverage rules and a look-ahead guard)
+comes with the same simulations that justified the choice of EWC. Run `python -m quantlab.factor_test`.
+
+False-positive rate with **no signal at all** (20,000 simulated IC series of 185 months, monthly IC std 0.06, AR(1) autocorrelation ρ; one-sided t > 1.96, nominal 2.5 %):
+
+| IC autocorrelation ρ | EWC | Newey–West, lag 4 | Newey–West, lag 12 |
+|---|---|---|---|
+| 0.0 | 2.43 % | 2.92 % | 3.58 % |
+| 0.3 | 2.59 % | 3.86 % | 4.03 % |
+| 0.5 | 2.56 % | 5.09 % | 4.44 % |
+
+![False-positive rate under a zero signal](../figures/fig8_fpr.svg)
+
+Newey–West with normal critical values rejects up to twice as often as it should once ICs are autocorrelated; EWC stays at the nominal level.
+The price is some power, which the pre-registration's power analysis accounts for. Power to reach the **promotion** bar (EWC t > 3; ρ = 0.3, so the long-run IC std is 0.082):
+
+| True mean IC | Simulated (4,000 runs) | Formula |
+|---|---|---|
+| 0.01 | 5.6 % | 5.4 % |
+| 0.02 | 40.6 % | 38.8 % |
+| 0.03 | 86.7 % | 85.0 % |
+
+With these parameters the smallest mean IC detectable with 80 % power is 0.018 at t > 1.96, 0.022 at the three-test Bonferroni bar (2.39) and 0.029 at t > 3.
+For comparison, the surviving signal's mean IC was 0.021–0.023: above the first bar, below the last — consistent with "passed, not promoted".
+
 ## 5. Multiple testing
 
 - Each round declares how many tests it will run; thresholds are **Bonferroni-adjusted** within the round (e.g. three signals → one-sided threshold t = 2.39).
 - Every test goes into an **append-only registry**, pass or fail, so "how many things were tried" is never in doubt.
 - A stricter **promotion** label requires t > 3 (following Harvey, Liu & Zhu 2016). No signal has been promoted.
+
+![EWC t-statistics of the 18 tests](../figures/fig1_tests.svg)
 
 ## 6. Exploration vs. confirmation
 
