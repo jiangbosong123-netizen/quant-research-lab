@@ -80,14 +80,16 @@ The same risk model and optimiser, applied to the mispricing composite that pass
     4-month holding period (the alpha persists, so a trade is paid back over several months); realised costs are charged in full. The first month C = B.
     The amortisation was added after the first attempt stopped in its first month (with the full cost against a small alpha the optimiser did not converge).
 - **Pipeline check**: construction A on the full universe reproduces the private backtest's monthly returns to within 6 × 10⁻⁷.
+- **Data gate**: inside the risk-model window a daily |return| above 100 % is treated as a data error (that day's return set to zero; 29 stock-days in total).
+  The first version lacked this gate; adding it moved B's and C's Sharpe ratios by about 0.01 and left A unchanged.
 
 | 2012-08 → 2017-12 | A: equal weight | B: factor neutral | C: + cost-aware |
 |---|---|---|---|
-| Sharpe ratio before costs | 0.60 | 0.75 | **0.83** |
-| Sharpe ratio after costs | 0.34 | 0.02 | **0.38** |
+| Sharpe ratio before costs | 0.60 | 0.76 | **0.84** |
+| Sharpe ratio after costs | 0.34 | 0.03 | **0.39** |
 | Annual return after costs | 3.9 % | 0.1 % | 1.4 % |
 | Volatility | 11.5 % | 3.5 % | 3.7 % |
-| Maximum drawdown (after costs) | −17.4 % | −7.1 % | −5.9 % |
+| Maximum drawdown (after costs) | −17.4 % | −7.0 % | −5.9 % |
 | Realised beta to the S&P 500 | −0.27 | +0.02 | +0.02 |
 | Ex-ante beta, median (range) | −0.21 (−0.47 to +0.14) | 0.00 (±0.01) | 0.00 (±0.01) |
 | Factor share of predicted risk (median) | 57 % | 0 % | 0 % |
@@ -103,8 +105,8 @@ What it shows:
 - **Most of A's risk was not the signal.** 57 % of its predicted risk came from factors, chiefly a market bet that drifted between −0.47 and +0.14.
   A's path is dominated by those bets — its jump and reversal in early 2016 is much smaller in B and C.
 - **Neutralising removes risk far more than it adds return.** Volatility falls by two-thirds and the drawdown from −17 % to −6 %;
-  the Sharpe ratio before costs rises (0.60 → 0.75–0.83), but the return per unit of gross exposure is smaller, because factor returns are hedged out.
-- **A cost-blind optimiser gives it all back.** B trades 63 % a month to earn 2.6 %/yr before costs and ends near zero; C trades 25 % and keeps 0.38.
-- **Do not over-read 0.34 vs 0.38.** Over 5.4 years the standard error of a Sharpe ratio is about 0.44; the robust findings are the risk reduction and
+  the Sharpe ratio before costs rises (0.60 → 0.76–0.84), but the return per unit of gross exposure is smaller, because factor returns are hedged out.
+- **A cost-blind optimiser gives it all back.** B trades 63 % a month to earn 2.6 %/yr before costs and ends near zero; C trades 25 % and keeps 0.39.
+- **Do not over-read 0.34 vs 0.39.** Over 5.4 years the standard error of a Sharpe ratio is about 0.44; the robust findings are the risk reduction and
   that cost-awareness is not optional. On the synthetic market (above) the gains were much larger — real signals and real risk models are messier.
 - The fair comparison is at equal risk: scaled up about three times, C would have A's volatility at its own Sharpe ratio — if borrow, financing and market impact at that size allow it.

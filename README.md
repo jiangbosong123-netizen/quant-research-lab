@@ -71,8 +71,8 @@ no market data is redistributed.
 - With 14 years of data the 95 % interval for that Sharpe ratio is roughly **0 to 1.1** — the backtest cannot distinguish "0.55" from "close to zero".
 - The equal-weight construction leaves large unintended exposures: in a rehearsal of the live process the portfolio's ex-ante market beta was about **−1.4**, outside anything seen in the backtest.
 - **Applying a risk model to the same signal on real 2012–2017 data** (Part 2): 57 % of the equal-weight portfolio's predicted risk was factor risk. Neutralising it cut volatility
-  from 11.5 % to 3.7 % and the maximum drawdown from −17 % to −6 %, and raised the Sharpe ratio before costs from 0.60 to 0.83 — but after costs only from 0.34 to 0.38,
-  and a cost-blind optimizer gave everything back (0.02). On real data the gain is mostly risk reduction, and cost-awareness is not optional.
+  from 11.5 % to 3.7 % and the maximum drawdown from −17 % to −6 %, and raised the Sharpe ratio before costs from 0.60 to 0.84 — but after costs only from 0.34 to 0.39,
+  and a cost-blind optimizer gave everything back (0.03). On real data the gain is mostly risk reduction, and cost-awareness is not optional.
 
 ![Real data: cumulative net return of three constructions](figures/fig9_real_cumulative.svg)
 
