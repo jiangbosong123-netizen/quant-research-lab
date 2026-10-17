@@ -1,0 +1,11 @@
+variant,change,ic_mean,ic_t_nw,net_sharpe,gross_sharpe,monthly_turnover
+composite,"equal-weight, no fitting",0.022417,1.4027,0.7649,0.9959,0.8054
+V0,three-model average (baseline),0.005861,0.3419,-0.0966,0.3448,2.1816
+V1,label minus industry mean,-0.003777,-0.2371,-0.6284,-0.1647,2.2411
+V2,features ranked within industry,-0.010419,-0.7953,-1.0068,-0.3735,2.2216
+V3,+ 12-month changes (21 features),-0.003121,-0.1941,-0.6066,-0.0983,2.2324
+V4,3-month return label,0.002744,0.1536,0.1265,0.4530,1.6486
+V5,learn corrections to the composite,0.007704,0.4566,-0.1435,0.2952,2.2086
+V6,3-month smoothing of predictions,0.000935,0.0672,-0.3485,-0.0478,1.1578
+V7,hyper-parameters chosen by validation,0.005414,0.3114,-0.1988,0.2295,2.4303
+V8,all of the above,-0.003817,-0.3343,-0.8195,-0.3972,1.1773

@@ -1,0 +1,7 @@
+model,ic_mean,ic_t_nw,net_sharpe,gross_sharpe,monthly_turnover
+"composite (equal-weight, no fitting)",0.024790,1.5844,0.8309,1.0657,0.7979
+random forest,-0.004751,-0.2619,-0.2060,0.2390,2.0636
+gradient-boosted trees,0.006018,0.3794,-0.2098,0.3280,2.4431
+neural network,-0.002512,-0.1449,0.1126,0.5078,2.1631
+average of the three,-0.000085,-0.0047,-0.1758,0.2677,2.1672
+average of the three + composite,0.007649,0.5270,-0.0217,0.4695,1.8769

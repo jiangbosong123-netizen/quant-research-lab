@@ -88,3 +88,47 @@ signal months 2012-07 → 2017-11. The original test had already seen these year
   The defensible statement is "no evidence that ML helped here, and it traded far more", not "ML does not work".
   Where ML does work in the literature (Gu, Kelly & Xiu 2020) it has decades of data, hundreds of features and the whole market.
 
+### Random forest + boosted trees + neural network, averaged
+
+A common practitioner recipe: fit several different models and average their rank predictions. Same data, same walk-forward (40 test months), settings fixed in advance —
+a random forest (100 trees, depth 6), the boosted trees above, and a 13 → 32 → 16 → 1 ReLU network (early stopping on the last 12 training months, 5 seeds averaged).
+The code is checked first: the network's back-propagation matches numerical derivatives (to 10⁻¹⁰), and on a simulated U-shape both the network and the forest learn the truth
+(R² 0.96 and 0.74, ridge 0.22).
+
+| 40 test months | Mean IC (Newey–West t) | Long–short Sharpe after costs | Monthly turnover |
+|---|---|---|---|
+| **Composite** (no fitting) | **+0.025** (1.58) | **0.83** | 80 % |
+| Random forest | −0.005 (−0.26) | −0.21 | 206 % |
+| Boosted trees | +0.006 (0.38) | −0.21 | 244 % |
+| Neural network | −0.003 (−0.14) | 0.11 | 216 % |
+| **Average of the three** | **−0.000** (0.00) | −0.18 | 217 % |
+| Average of the three + composite | +0.008 (0.53) | −0.02 | 188 % |
+
+Averaging only cancels errors the models do *not* share; here their monthly ICs correlate 0.57–0.94 (forest vs boosted trees: 0.94) — they fit the same noise.
+
+### Eight standard fixes, pre-specified
+
+Next, the usual remedies, each changing one thing, all fixed (with the selection rule) before running and all reported, on a common 38-month window:
+
+| Variant | Change | Mean IC (t) | Sharpe after costs | Turnover |
+|---|---|---|---|---|
+| Composite | equal-weight, no fitting | **+0.022** (1.40) | **0.76** | 81 % |
+| V0 | three-model average (baseline) | +0.006 (0.34) | −0.10 | 218 % |
+| V1 | label minus industry mean | −0.004 (−0.24) | −0.63 | 224 % |
+| V2 | features ranked within industry | −0.010 (−0.80) | −1.01 | 222 % |
+| V3 | + 12-month changes (21 features) | −0.003 (−0.19) | −0.61 | 223 % |
+| V4 | 3-month return label | +0.003 (0.15) | 0.13 | 165 % |
+| V5 | learn corrections to the composite | +0.008 (0.46) | −0.14 | 221 % |
+| V6 | 3-month smoothing of predictions | +0.001 (0.07) | −0.35 | 116 % |
+| V7 | hyper-parameters chosen by validation | +0.005 (0.31) | −0.20 | 243 % |
+| V8 | all of the above | −0.004 (−0.33) | −0.82 | 118 % |
+
+![Mean IC of the ensemble and eight fixes](../figures/fig13_real_ml_variants.svg)
+
+- No fix lifted the IC above 0.01. The best net Sharpe (V4, 0.13), deflated for nine tries, has only a 22 % probability of a true Sharpe above zero.
+- Longer labels and smoothing halve turnover but add no predictive power. In V5 the models' own noise swamped the composite (rank correlation 0.31):
+  model predictions should have been shrunk towards zero — not tried here, because it was not pre-specified.
+- More complexity made things worse (V8). With ~650 stocks, five years and 13 features, the models cannot estimate more than an equal-weighted average of known anomalies already captures.
+  This matches the literature: Avramov, Cheng & Metzker (2023) find that machine-learning stock-selection profits come mostly from hard-to-trade stocks (microcaps, distressed firms)
+  and shrink sharply once those are excluded and trading costs are counted. More data, not fancier models, is what would be needed.
+

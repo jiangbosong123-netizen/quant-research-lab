@@ -84,7 +84,8 @@ no market data is redistributed.
    to 1.6–2.7 (factor-neutral, risk-model-optimized), and cost-aware optimization cuts turnover by about four-fifths. On real data the same machinery mainly removed risk
    (volatility down by two-thirds) — a more modest, more realistic result.
 3. **Validation is where ML goes wrong.** Shuffled K-fold CV on pure noise with overlapping labels produced an IC of 0.21 (Newey–West t ≈ 27); purged, time-ordered validation gave ≈ 0.
-   On real stocks, properly validated ridge and boosted trees did not beat simply averaging the eight anomalies (IC −0.014 and +0.006 vs +0.025) and traded two to three times as much.
+   On real stocks, properly validated ridge, boosted trees, a random forest, a neural network and their average all failed to beat simply averaging the eight anomalies
+   (IC between −0.014 and +0.006 vs +0.025), and eight standard fixes (industry-neutral labels, longer labels, smoothing, tuning, ...) did not change that.
 4. **Costs set capacity.** With the liquidity of the stocks the strategy actually traded, costs are small at personal scale but consume about half its gross return at roughly $100 m per side.
 5. **Selling volatility pays — until it doesn't.** On 2010–2017 data, selling one-month S&P 500 variance at the VIX earned money in 86 % of months (Sharpe 2.0),
    with skewness −3.3 and single months losing as much as nine average months.

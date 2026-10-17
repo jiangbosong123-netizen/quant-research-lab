@@ -173,11 +173,19 @@ def fig12_real_short_vol():
     save("fig12_real_short_vol.svg", f.svg())
 
 
+def fig13_real_ml_variants():
+    rows = _rows("real_ml_variants.csv")
+    save("fig13_real_ml_variants.svg", bar_chart("Ensemble plus eight standard fixes, real stocks 2014-10 to 2017-11: mean monthly IC",
+                                                 [r["variant"] for r in rows], {"mean IC": [float(r["ic_mean"]) for r in rows]},
+                                                 ylabel="mean rank IC (out of sample)", yfmt=lambda v: f"{v:.3f}",
+                                                 note="V0 = RF + GBDT + NN averaged; V1-V7 change one thing each; V8 = all. 38 test months; see docs/03 for the list."))
+
+
 if __name__ == "__main__":
     np.seterr(divide="ignore", over="ignore", invalid="ignore")
     os.makedirs(OUT, exist_ok=True)
     every = (fig1_tests, fig2_minvar, fig3_construction, fig4_leakage, fig5_frontier, fig6_capacity, fig7_delta_hedge, fig8_fpr, fig9_real,
-             fig10_real_ml, fig11_real_capacity, fig12_real_short_vol)
+             fig10_real_ml, fig11_real_capacity, fig12_real_short_vol, fig13_real_ml_variants)
     wanted = sys.argv[1:]                                             # e.g. "fig2 fig9" to redraw only those
     for f in every:
         if not wanted or any(f.__name__.startswith(w) for w in wanted):
