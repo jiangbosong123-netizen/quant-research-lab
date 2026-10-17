@@ -21,6 +21,7 @@ The rest of this repository explains how that conclusion was reached, why most i
 | **3. Machine learning & overfitting** | Histogram gradient-boosted trees, purged / embargoed cross-validation, Newey–West t-stats, the deflated Sharpe ratio — and a walk-forward test **on real stocks** against the simple composite | [`docs/03_ml_and_overfitting.md`](docs/03_ml_and_overfitting.md), `quantlab/gbdt.py`, `quantlab/validation.py` |
 | **4. Execution & transaction costs** | Square-root impact, Almgren–Chriss optimal execution, implementation-shortfall TCA, strategy capacity — recomputed **with the stocks the portfolio actually traded** | [`docs/04_execution_and_costs.md`](docs/04_execution_and_costs.md), `quantlab/execution.py` |
 | **5. Options, probability & market making** | Black–Scholes and Greeks, binomial trees, implied volatility, delta-hedging P&L, Kelly sizing, a Glosten–Milgrom market-making simulation, classic probability puzzles — plus **the variance risk premium on real 2010–2017 data** | [`docs/05_options_and_market_making.md`](docs/05_options_and_market_making.md), `quantlab/options.py`, `quantlab/probability.py` |
+| **6. The strategy in detail** | The universe rules, the eight-anomaly mispricing signal (formulas, point-in-time rules), the base long–short portfolio and eleven variants with their rules and backtests, what drives the returns (factor regression, risk decomposition), and the operating and risk controls | [`docs/06_strategy.md`](docs/06_strategy.md), `quantlab/strategy.py` (the rules as tested functions) |
 
 Every module in `quantlab/` has a self-test that checks it against an independent answer
 (closed form vs. numerical solution, brute-force enumeration, finite differences, or Monte Carlo). Run them all, and regenerate every figure, with:
@@ -61,7 +62,8 @@ no market data is redistributed.
 | 17 | Macro composite (economic trend, carry timing, seasonality) | fail | EWC t 0.25 |
 | 18 | Merger arbitrage (cash deals, identified from SEC filings) | fail | EWC t 1.27; market beta 0.60 explained the return |
 
-**The portfolio built on the surviving signal** (50 long / 50 short, equal weight, monthly, 2012-08 → 2026-07, net of 0.2 % one-way costs and 1 %/yr borrow):
+**The portfolio built on the surviving signal** (50 long / 50 short, equal weight, monthly, 2012-08 → 2026-07, net of 0.2 % one-way costs and 1 %/yr borrow;
+the exact rules, the eleven variants and the risk controls are in [`docs/06_strategy.md`](docs/06_strategy.md)):
 
 | | Sharpe | CAGR | Volatility | Max drawdown |
 |---|---|---|---|---|
