@@ -1,0 +1,9 @@
+variant,description,monthly_mean,annualised_vol,sharpe,max_drawdown
+P1,"long-short, unhedged",0.007584,0.164937,0.5517,-0.397580
+P2a,hedged with SPY (beta from 252 days),0.009856,0.152526,0.7754,-0.359159
+P7a_0,"P2a via index futures, funding = T-bill",0.009469,0.152455,0.7453,-0.360724
+P7a_50bp,"P2a via index futures, funding = T-bill + 0.5 %",0.009371,0.152458,0.7376,-0.361584
+P7a_100bp,"P2a via index futures, funding = T-bill + 1.0 %",0.009273,0.152463,0.7299,-0.362442
+P7b,buy 1-month at-the-money index calls sized by the negative beta,0.007832,0.155508,0.6044,-0.388647
+P7c,"buy 1-month 5 % out-of-the-money index puts, same size",0.006955,0.167275,0.4990,-0.409197
+P7d,linear hedge of the same size as P7b (control),0.009975,0.153539,0.7796,-0.353441

@@ -40,10 +40,10 @@ def save(name, svg):
 
 
 def fig1_tests():
-    t = [1.50, 2.45, -0.36, 0.69, 1.78, 1.84, 1.16, -0.95, 2.49, -1.42, 2.29, 1.72, 1.75, 1.14, 1.27, -0.25, 0.25, 1.27]
-    save("fig1_tests.svg", bar_chart("18 pre-registered tests: EWC normal-equivalent t", [str(i) for i in range(1, 19)], {"EWC eq. t": t},
+    t = [1.50, 2.45, -0.36, 0.69, 1.78, 1.84, 1.16, -0.95, 2.49, -1.42, 2.29, 1.72, 1.75, 1.14, 1.27, -0.25, 0.25, 1.27, 4.43]
+    save("fig1_tests.svg", bar_chart("19 pre-registered tests run: EWC normal-equivalent t", [str(i) for i in range(1, 20)], {"EWC eq. t": t},
                                      ylabel="t", hlines=[(1.96, "pass (single test) 1.96", "#c53030"), (3.0, "promotion 3.0", "#805ad5")],
-                                     yfmt=lambda v: f"{v:.2f}", note="2 and 9: same signal (9 = survivorship-free re-run). 5-7, 11-12: Bonferroni bar 2.39. 1: judged on Newey-West t (1.85)."))
+                                     yfmt=lambda v: f"{v:.2f}", note="2 and 9: same signal. 5-7, 11-12: Bonferroni bar 2.39. 1: judged on NW t (1.85). 19: variance risk premium (replication). 20: not run."))
 
 
 def fig2_minvar():
@@ -181,11 +181,36 @@ def fig13_real_ml_variants():
                                                  note="V0 = RF + GBDT + NN averaged; V1-V7 change one thing each; V8 = all. 38 test months; see docs/03 for the list."))
 
 
+def fig14_vrp():
+    rows = _rows("derivatives_vrp_monthly.csv")
+    f = Figure("Test #19: selling 1-month S&P 500 variance at the VIX, 1990-2026", "year",
+               "cumulative return, % of capital (10 % variance notional)", yfmt=lambda v: f"{v:g}", xfmt=lambda v: f"{v:.0f}", legend="top left")
+    cum, seg = 0.0, {"a": ([], []), "b": ([], []), "c": ([], [])}
+    for r in rows:
+        cum += float(r["net_excess_return"]) * 100
+        k = "a" if r["signal_month"] <= "2009-11" else ("b" if r["signal_month"] <= "2017-11" else "c")
+        seg[k][0].append(holding_month_end(r["signal_month"]))
+        seg[k][1].append(cum)
+    f.line(*seg["a"], label="test sample, 1990-2009 (t 3.73)", markers=False)
+    f.line(*seg["b"], label="2010-2017: seen in earlier practice work, excluded from the test", dashed=True, markers=False)
+    f.line(*seg["c"], label="test sample, 2018-2026 (t 1.94)", markers=False)
+    f.note("Cumulative sum, net of a 1 % strike cost. Worst months: Sep 2008 -61 %, Mar 2020 -44 %, Apr 2025 -37 %.")
+    save("fig14_vrp_cumulative.svg", f.svg())
+
+
+def fig15_hedges():
+    rows = {r["variant"]: r for r in _rows("derivatives_hedges.csv")}
+    keys = [("P1", "P1 unhedged"), ("P2a", "P2a SPY hedge"), ("P7a_50bp", "futures hedge"), ("P7d", "linear, P7b size"), ("P7b", "buy calls"), ("P7c", "buy puts")]
+    save("fig15_hedges.svg", bar_chart("Hedging the long-short book, 2012-08 to 2026-07: Sharpe ratio after costs", [lab for _, lab in keys],
+                                       {"Sharpe": [float(rows[k]["sharpe"]) for k, _ in keys]}, ylabel="annualised Sharpe (net)", yfmt=lambda v: f"{v:.2f}",
+                                       note="Futures hedge = P2a with funding at T-bill + 0.5 %. Calls/puts priced from the VIX (Black-Scholes) + 2 %. Same history; reported, not evidence."))
+
+
 if __name__ == "__main__":
     np.seterr(divide="ignore", over="ignore", invalid="ignore")
     os.makedirs(OUT, exist_ok=True)
     every = (fig1_tests, fig2_minvar, fig3_construction, fig4_leakage, fig5_frontier, fig6_capacity, fig7_delta_hedge, fig8_fpr, fig9_real,
-             fig10_real_ml, fig11_real_capacity, fig12_real_short_vol, fig13_real_ml_variants)
+             fig10_real_ml, fig11_real_capacity, fig12_real_short_vol, fig13_real_ml_variants, fig14_vrp, fig15_hedges)
     wanted = sys.argv[1:]                                             # e.g. "fig2 fig9" to redraw only those
     for f in every:
         if not wanted or any(f.__name__.startswith(w) for w in wanted):

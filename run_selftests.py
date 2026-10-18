@@ -6,7 +6,7 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-MODULES = ["factor_test", "strategy", "risk_model", "optimizer", "portfolio_demo", "ml_data", "gbdt", "validation", "ml_demo", "execution", "options", "probability", "svg"]
+MODULES = ["factor_test", "strategy", "risk_model", "optimizer", "portfolio_demo", "ml_data", "gbdt", "validation", "ml_demo", "execution", "options", "probability", "variance", "svg"]
 
 
 def main():

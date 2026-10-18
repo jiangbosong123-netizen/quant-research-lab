@@ -3,8 +3,9 @@
 A personal research lab for US equities that tries to answer one question honestly:
 **which return signals survive costs when you test them the way a careful buy-side researcher would?**
 
-The short answer after 18 pre-registered tests: **one signal survived, weakly** (a composite of eight classic mispricing anomalies, EWC-equivalent t ≈ 2.5),
+The short answer after 19 pre-registered tests: **one equity signal survived, weakly** (a composite of eight classic mispricing anomalies, EWC-equivalent t ≈ 2.5),
 and the long–short portfolio built on it has a backtest Sharpe ratio of about **0.55** with a **−40 %** maximum drawdown — useful as evidence, mediocre as a product.
+Outside equities, the **variance risk premium** passed strongly (t 4.4) — but it is insurance selling with crash-sized losses, and the instrument tested is not one an individual can trade.
 The rest of this repository explains how that conclusion was reached, why most ideas failed, and the standard quant toolkit
 (risk models, optimization, ML validation, execution, options) rebuilt from scratch in NumPy.
 
@@ -22,6 +23,7 @@ The rest of this repository explains how that conclusion was reached, why most i
 | **4. Execution & transaction costs** | Square-root impact, Almgren–Chriss optimal execution, implementation-shortfall TCA, strategy capacity — recomputed **with the stocks the portfolio actually traded** | [`docs/04_execution_and_costs.md`](docs/04_execution_and_costs.md), `quantlab/execution.py` |
 | **5. Options, probability & market making** | Black–Scholes and Greeks, binomial trees, implied volatility, delta-hedging P&L, Kelly sizing, a Glosten–Milgrom market-making simulation, classic probability puzzles — plus **the variance risk premium on real 2010–2017 data** | [`docs/05_options_and_market_making.md`](docs/05_options_and_market_making.md), `quantlab/options.py`, `quantlab/probability.py` |
 | **6. The strategy in detail** | The universe rules, the eight-anomaly mispricing signal (formulas, point-in-time rules), the base long–short portfolio and eleven variants with their rules and backtests, what drives the returns (factor regression, risk decomposition), and the operating and risk controls | [`docs/06_strategy.md`](docs/06_strategy.md), `quantlab/strategy.py` (the rules as tested functions) |
+| **7. Derivatives** | A pre-registered test of the variance risk premium on 1990–2026 data (with the years already seen excluded), the tradable test that was designed but not run and why, and hedging the long–short book with futures vs. calls vs. puts | [`docs/07_derivatives.md`](docs/07_derivatives.md), `quantlab/variance.py` |
 
 Every module in `quantlab/` has a self-test that checks it against an independent answer
 (closed form vs. numerical solution, brute-force enumeration, finite differences, or Monte Carlo). Run them all, and regenerate every figure, with:
@@ -40,9 +42,9 @@ no market data is redistributed.
 
 ## Headline results (Part 1)
 
-18 hypotheses were registered before any data was examined; each had a fixed threshold, test statistic and budget.
+20 hypotheses were registered before any data was examined; each had a fixed threshold, test statistic and budget. 19 were run; one (#20) was not, because its data cost more than it was worth to the project.
 
-![EWC t-statistics of the 18 tests](figures/fig1_tests.svg)
+![EWC t-statistics of the 19 tests run](figures/fig1_tests.svg)
 
 | # | Signal (US large/mid caps unless noted) | Result | Main statistic |
 |---|---|---|---|
@@ -61,6 +63,8 @@ no market data is redistributed.
 | 16 | Cross-asset carry + value + low-beta composite | fail | EWC t −0.25 |
 | 17 | Macro composite (economic trend, carry timing, seasonality) | fail | EWC t 0.25 |
 | 18 | Merger arbitrage (cash deals, identified from SEC filings) | fail | EWC t 1.27; market beta 0.60 explained the return |
+| 19 | **Variance risk premium: sell one-month S&P 500 variance at the VIX** (1990–2026, years already seen excluded; a replication) | **pass, promoted** | EWC t **4.43**; 2018–26 alone 1.94; skew-adjusted t 2.47 |
+| 20 | Sell index puts with daily delta hedging at real bid/ask prices | not run | needed a paid options dataset; decided not to buy |
 
 **The portfolio built on the surviving signal** (50 long / 50 short, equal weight, monthly, 2012-08 → 2026-07, net of 0.2 % one-way costs and 1 %/yr borrow;
 the exact rules, the eleven variants and the risk controls are in [`docs/06_strategy.md`](docs/06_strategy.md)):
@@ -90,7 +94,9 @@ the exact rules, the eleven variants and the risk controls are in [`docs/06_stra
    (IC between −0.014 and +0.006 vs +0.025), and eight standard fixes (industry-neutral labels, longer labels, smoothing, tuning, ...) did not change that.
 4. **Costs set capacity.** With the liquidity of the stocks the strategy actually traded, costs are small at personal scale but consume about half its gross return at roughly $100 m per side.
 5. **Selling volatility pays — until it doesn't.** On 2010–2017 data, selling one-month S&P 500 variance at the VIX earned money in 86 % of months (Sharpe 2.0),
-   with skewness −3.3 and single months losing as much as nine average months.
+   with skewness −3.3 and single months losing as much as nine average months. The pre-registered test on the other years (#19) passed with t 4.4 — and lost 61 % in September 2008 at a modest size.
+6. **Derivatives are mostly tools.** For the long–short book, an index-futures beta hedge kept most of its benefit after funding costs (Sharpe 0.73–0.75 vs 0.55 unhedged);
+   buying calls did worse than the linear hedge, and buying puts hedged a risk the book does not have (Part 7).
 
 ## License
 

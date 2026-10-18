@@ -71,9 +71,9 @@ For comparison, the surviving signal's mean IC was 0.021–0.023: above the firs
 
 - Each round declares how many tests it will run; thresholds are **Bonferroni-adjusted** within the round (e.g. three signals → one-sided threshold t = 2.39).
 - Every test goes into an **append-only registry**, pass or fail, so "how many things were tried" is never in doubt.
-- A stricter **promotion** label requires t > 3 (following Harvey, Liu & Zhu 2016). No signal has been promoted.
+- A stricter **promotion** label requires t > 3 (following Harvey, Liu & Zhu 2016). No equity signal has been promoted; test #19 (the variance risk premium, a replication of a well-known effect) was.
 
-![EWC t-statistics of the 18 tests](../figures/fig1_tests.svg)
+![EWC t-statistics of the 19 tests run](../figures/fig1_tests.svg)
 
 ## 6. Exploration vs. confirmation
 
