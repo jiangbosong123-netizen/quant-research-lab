@@ -93,7 +93,7 @@ Most of the return comes from the **short side** (overpriced stocks underperform
 | **P4c** | P1 weighted by rank (2:1 extreme to least) | 0.57 | 8.7 % | 17.0 % | −40.6 % | 0.29 % | backtest only |
 | **P4d** | 100 long / 100 short | 0.56 | 6.7 % | 13.1 % | −30.9 % | 0.26 % | backtest only |
 | **P5a** | P1 without the 5 least liquid shorts | 0.59 | 9.0 % | 17.0 % | −40.7 % | 0.29 % | backtest only |
-| **P5b** | Shorts only + long SPY | 0.92 | 13.9 % | 15.6 % | −33.6 % | 0.19 % | backtest only |
+| **P5b** | Shorts only + long SPY | 0.92 | 13.9 % | 15.6 % | −33.6 % | 0.19 % | shadow; view only |
 | **P6** | P1 scaled by S&P 500 volatility (max 1.5x) | 0.63 | 9.5 % | 16.3 % | −30.4 % | 0.30 % | backtest only |
 
 Rule details (all monthly, same costs as P1 unless stated):
@@ -123,13 +123,16 @@ The assumed 0.4 % round trip and 1 %/yr borrow leave a wide margin; Part 4 estim
 
 ## 6. Operations and risk controls
 
-- **Shadow portfolios**: P1, P2a, P2b, P3a and P3b run on paper from the November 2026 rebalance, for at least six rebalances; they stop only for process failures
-  (late or changed inputs), never because of their P&L.
+- **Shadow portfolios**: P1, P2a, P2b, P3a, P3b and P5b run on paper from the November 2026 rebalance, for at least six rebalances; they stop only for process failures
+  (late or changed inputs), never because of their P&L. P2b and P5b are watched only, never traded with real money.
 - **Monthly runbook**, one command: refresh prices → rebuild the universe → compute the signal → target holdings for each book → ex-ante risk decomposition → commit and merge.
   It was rehearsed end-to-end on two past months before going live.
 - **Real money** is the owner's decision, allowed only after the first paper rebalance runs cleanly; orders are placed by hand as market-on-close orders on *T1*. No automated trading.
 - **Stop line**: each book's backtest maximum drawdown (P1 −39.8 %, P2a −35.9 %, P3a −36.6 %, P3b −31.5 %), measured on its shadow ledger from the month real money starts;
   a breach closes the real-money position at the next close.
+- **Momentum-crash rule**: if on the signal date SPY is down over the past 24 months and its 126-trading-day volatility is at least 20 % a year (the state after which
+  Daniel and Moskowitz (2016) find momentum crashes), the real-money position is halved for that month. A linear stress test of P1 on March–May 2009 factor returns
+  gives about −26 % over three months (90 % lower bound −40 %, the stop line), and a crash is probably worse than linear.
 - **Monitoring** (a local dashboard): each month's ex-ante beta, volatility, hedge ratio and position size against the backtest's history; the factor risk decomposition of every book;
   and, once real money trades, the execution cost of each fill against the official close (in basis points).
 

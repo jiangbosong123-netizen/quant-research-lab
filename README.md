@@ -17,6 +17,7 @@ The rest of this repository explains how that conclusion was reached, why most i
 
 | Part | What it shows | Where |
 |---|---|---|
+| **At a glance** | One page: what the lab does, the signal in plain words, every portfolio's backtest next to SPY, how reliable and fragile it is, what real money would lose, and where it stands against the market and the literature | [`docs/00_at_a_glance.md`](docs/00_at_a_glance.md) |
 | **1. Research process** | Pre-registration, multiple-testing control, power analysis, HAC inference (EWC / Newey–West), survivorship-bias correction, an append-only test registry, and a shadow (paper) portfolio with a rehearsed monthly runbook | [`docs/01_research_process.md`](docs/01_research_process.md), `quantlab/factor_test.py` (the test itself, validated by simulation) |
 | **2. Risk model & portfolio optimization** | Barra-style factor risk model, Ledoit–Wolf shrinkage, an ADMM optimizer with neutrality constraints, position limits and transaction costs — on synthetic data **and applied to the surviving signal on real 2012–2017 data** | [`docs/02_risk_model_and_optimization.md`](docs/02_risk_model_and_optimization.md), `quantlab/risk_model.py`, `quantlab/optimizer.py` |
 | **3. Machine learning & overfitting** | Histogram gradient-boosted trees, purged / embargoed cross-validation, Newey–West t-stats, the deflated Sharpe ratio — and a walk-forward test **on real stocks** against the simple composite | [`docs/03_ml_and_overfitting.md`](docs/03_ml_and_overfitting.md), `quantlab/gbdt.py`, `quantlab/validation.py` |
