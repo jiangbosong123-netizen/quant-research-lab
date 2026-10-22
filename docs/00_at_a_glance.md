@@ -60,7 +60,7 @@ Both tests pass the 1.96 bar but not the stricter 3 used to mark strong evidence
 - Annual return is compounded; drawdowns are measured at month ends. "Return ÷ vol" is annualised mean over volatility with cash earning nothing.
 - Costs: 0.4 % round trip times turnover, plus 1 % a year to borrow the shorts.
 - P2a and P5b look better mainly because of their SPY leg in a rising market, not better stock picking.
-- The shadow books start with the November 2026 rebalance. Six more variants (P4a–d, P5a, P6) are backtest only (Part 6); hedging P1 with index futures or options is in Part 7.
+- The shadow books start with the November 2026 rebalance. Seven more variants (P4a–d, P5a, P6, P9) are backtest only (Part 6); hedging P1 with index futures or options is in Part 7.
 
 ## How it went, honestly
 
@@ -73,6 +73,8 @@ Both tests pass the 1.96 bar but not the stricter 3 used to mark strong evidence
   - The ratio is flat across 30–70 names per side (0.53–0.59), so it is not a tuned spike.
   - It is very sensitive to costs: doubling them gives 0.35.
   - It leans on momentum: dropping that one component gives 0.24.
+  - Making it factor-neutral with a risk model and a cost-aware optimizer (P9, backtest only) cuts volatility from 16.5 % to 4.8 % and the drawdown to −13 %, but the
+    ratio after costs falls to 0.23: most of P1's return comes from the factor bets (momentum, profitability) it carries.
 - **What real money would lose.**
   - The backtest implicitly earns the T-bill rate on short-sale proceeds, as an institution would. A retail account earns little or nothing on them.
   - Earning nothing at today's T-bill rate puts P1's ratio at about 0.30. At a broker tier that pays 1.25 % a year below the benchmark it is about 0.48.
@@ -99,9 +101,13 @@ Both tests pass the 1.96 bar but not the stricter 3 used to mark strong evidence
 
 ## What passed and what failed
 
-Twenty tests are in the registry. Three passed:
+Thirty-two tests are in the registry; thirty-one were run. Six passed:
 - the mispricing signal, twice (#2 and its survivorship-bias-free re-run #9);
-- the variance risk premium (#19, t 4.4), which is crash-prone insurance selling through an instrument individuals cannot trade (Part 7).
+- the variance risk premium (#19, t 4.4), which is crash-prone insurance selling through an instrument individuals cannot trade (Part 7);
+- from the October 2026 round of derivatives and calendar strategies (Part 7), all replications:
+  - selling Dow, Nasdaq-100 and Russell 2000 variance (#23), only at the margin and essentially the same bet as #19 (correlation 0.97);
+  - holding 10-year Treasuries over the last three trading days of each month (#29), by 0.003 above the bar, and not at double costs;
+  - an equal-risk composite of the round's nine standalone strategies (#32, t 3.8), weaker after 2018 and mostly the variance premium again.
 
 The rest:
 - **Equity signals that failed (12)**:
@@ -111,6 +117,8 @@ The rest:
 - **Cross-asset (3)**: time-series trend, a carry / value / low-beta composite, a macro composite.
 - **Event-driven (1)**: cash merger arbitrage.
 - **Not run (1)**: put writing with daily hedging, which needed a paid options dataset.
+- **Derivatives and calendar round that failed (8 + 1)**: selling Treasury variance (#21, the only one with real power), selling commodity and emerging-market variance,
+  timing the market with the variance premium, two refinements of #19, holding SVXY, commodity speculator positioning, FOMC announcement days and the turn of the month.
 
 **The latest literature survey** (October 2026) found nothing worth adding:
 - no new free-data signal had a reasonable chance of passing;

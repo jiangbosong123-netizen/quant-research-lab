@@ -5,10 +5,11 @@ not as a separate source of return. The strategies that earn money *from* deriva
 arbitrage, dispersion) depend on institutional execution: tight effective spreads, intraday hedging and many contracts at once.
 So the question for a small systematic shop is narrower: **what can be tested honestly with public data, and what is it worth in practice?**
 
-This part covers two pieces of work, both run under the same rules as the equity tests in Part 1 (rules written and committed before data, one run):
+This part covers three pieces of work, all run under the same rules as the equity tests in Part 1 (rules written and committed before data, one run):
 
 1. **Test #19 — the variance risk premium.** Is selling one-month S&P 500 variance still profitable after costs, on years this project had not looked at?
 2. **Hedging the long–short book (backtest only).** Index futures vs. buying calls vs. buying puts as a hedge for the portfolio of Part 6.
+3. **A round of derivatives and calendar strategies (tests #21–32).** Everything in the literature that free public data can test and a personal account can trade.
 
 Hypothetical capital of **$5 million** is used only to size contracts and costs; nothing here is a recommendation.
 
@@ -94,14 +95,62 @@ four of its five worst months came when the S&P 500 rose 5–8 % and the short s
 - **Hedge plus position sizing.** Adding the market-volatility scaling of Part 6 (P6) on top of the futures hedge gave a Sharpe ratio of 0.82 and cut the maximum drawdown from −36 % to −23 %; the gain in return over the hedge alone was not significant (t 0.9), and the smaller drawdown partly reflects a 252-day volatility window that happened to cover March 2020. The combination was chosen after seeing both parts, so it is reported, not used.
 - All variants use the same 2012–2026 history as the original backtest; they are reported, not evidence, and not used to pick a portfolio.
 
-## 4. What I took away
+## 4. A round of derivatives and calendar strategies (tests #21–32)
+
+After #19, every strategy found in the literature that could be tested with free public data (FRED, exchange-traded fund and index prices, CFTC position reports,
+the Federal Reserve's meeting calendar) was put into one pre-registered round. Three independent research agents read papers and data documentation only, never prices or returns.
+
+**Design.**
+- Positions are set at each month end from data available then and held to the next month end; main samples exclude holding months 2010–2017, as for #19.
+- #21 (selling Treasury variance) was the only candidate with adequate power (78–98 % at half the literature's effect), so it ran as its own round with the usual bar of 1.96.
+  The other eleven shared a Bonferroni budget (bar 2.84) and were run as explicit power exceptions (1–24 % power each).
+- An independent review before merging found three serious problems: a parser for the Federal Reserve's meeting calendar that misread the real pages,
+  a CFTC market-name check that would have silently dropped crude oil and natural gas, and the power trade-off above. All were fixed before any data was pulled.
+  The first data pull then stopped at a built-in check (scheduled meetings per year: eight, seven in 2020) because the parser still missed one heading format;
+  nothing was written or computed until that was fixed and recorded.
+
+**Results** (main sample; each is a monthly net excess return):
+
+| # | Strategy | Months | EWC t (bar) | Result | Notes |
+|---|---|---|---|---|---|
+| 21 | Sell one-month 10-year Treasury variance at the Treasury-note volatility index (realised variance from 7-year yields) | 112 | 1.35 (1.96) | fail | index values before 2013 were back-filled; 2018–20 alone −0.57 |
+| 22 | Sell crude-oil, gold, emerging-market and Brazil variance, each at its own volatility index, equal weight | 136 | 2.25 (2.84) | fail | skewness −7.4 |
+| 23 | Sell Dow, Nasdaq-100 and Russell 2000 variance | 251 | 2.90 (2.84) | **pass** | correlation 0.97 with #19 — the same bet; skew-adjusted t 2.72; 2.67 at double costs |
+| 24 | Long or short the S&P 500 by whether the variance premium is above its past median | 308 | 0.14 | fail | |
+| 25 | #19, skipping months when the VIX curve is inverted (the extra return) | 129 | 1.24 | fail | |
+| 26 | #19 scaled by its median VIX² ÷ current VIX² (alpha over #19) | 321 | 1.80 | fail | skew-adjusted t 3.43 |
+| 27 | Hold SVXY (−0.5× short-term VIX futures) | 103 | 1.17 | fail | the version an individual can trade |
+| 28 | Long the top third, short the bottom third of ten commodity ETFs by speculator net positioning (CFTC) | 105 | 1.56 | fail | |
+| 29 | Hold 10-year Treasuries over the last 3 trading days of each month | 345 | 2.841 (2.838) | **pass** | 2.38 at double costs; about 1.9 % a year, volatility 2.8 %; correlation −0.14 with the long–short book |
+| 30 | Hold the S&P 500 on scheduled FOMC announcement days | 296 | 1.84 | fail | 1994–2009 t 2.30, 2018–26 t 0.05: the effect is gone, as the literature reported |
+| 31 | Hold the S&P 500 from the last trading day to the third trading day of the next month | 344 | 1.91 | fail | |
+| 32 | Equal-risk composite of #21–24 and #27–31 (each scaled to 10 % volatility on its past 36 months) | 284 | 3.78 | **pass, promoted** | Sharpe 0.97, volatility 6.1 %, drawdown −13.8 %; 2018–26 alone 1.37; correlation 0.69 with #19, −0.01 with the long–short book |
+
+**How to read it.**
+- The one test with real power failed. Two passes are marginal, and #23 is essentially #19 again.
+- The composite passes mostly because it holds the variance premium four ways, plus some diversification; it weakened after 2018.
+- Selling volatility on other assets moves with the S&P 500 version, so it adds little diversification. The calendar effects are small and sensitive to costs.
+- All are replications on history that the literature had already examined. None can justify real money; tracking one would need a new portfolio-level pre-registration and a shadow book.
+
+## 5. What I took away
 
 1. **Derivatives are mostly tools.** For a long–short equity book the most useful derivative is the plain index future — cheap, capital-efficient, and easy to size.
 2. **Risk premia in options are real, but tail-heavy and hard to harvest small.** The variance premium passed a pre-registered test with t 4.4, yet one month can cost 60 % at a modest size,
    and the version an individual can trade needs paid data, daily hedging and tight execution.
 3. **Data cost is a design constraint.** The cleanest test of tradability was written and reviewed but not run because the data was not worth its price to the project — and that is recorded, not hidden.
+4. **Testing everything mostly finds what you already have.** Eleven more derivative and calendar strategies added one marginal calendar effect and the same variance premium in other forms.
+   The checks that mattered most were procedural: a review before any data, and a data pull that refuses to write anything when a sanity count is off.
 
 ### References
+- Bollerslev, T., Tauchen, G. & Zhou, H. (2009), *Expected Stock Returns and Variance Risk Premia*, Review of Financial Studies.
+- Choi, H., Mueller, P. & Vedolin, A. (2017), *Bond Variance Risk Premiums*, Review of Finance.
+- Fan, J. H., Fernandez-Perez, A., Fuertes, A.-M. & Miffre, J. (2020), *Speculative Pressure*, Journal of Futures Markets.
+- Hartley, J. & Schwarz, K. (2019), *Predictable End-of-Month Treasury Returns*, Wharton working paper.
+- Heston, S. & Todorov, K. (2024), *Exploring the Variance Risk Premium Across Assets*, working paper.
+- Johnson, T. L. (2017), *Risk Premia and the VIX Term Structure*, Journal of Financial and Quantitative Analysis.
+- Lucca, D. & Moench, E. (2015), *The Pre-FOMC Announcement Drift*, Journal of Finance.
+- Moreira, A. & Muir, T. (2017), *Volatility-Managed Portfolios*, Journal of Finance.
+- Prokopczuk, M., Symeonidis, L. & Wese Simen, C. (2017), *Variance Risk in Commodity Markets*, Journal of Banking & Finance.
 - Carr, P. & Wu, L. (2009), *Variance Risk Premiums*, Review of Financial Studies.
 - Dew-Becker, I., Giglio, S., Le, A. & Rodriguez, M. (2017), *The Price of Variance Risk*, Journal of Financial Economics (NBER WP 21182).
 - Daniel, K. & Moskowitz, T. (2016), *Momentum Crashes*, Journal of Financial Economics.

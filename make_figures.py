@@ -40,10 +40,13 @@ def save(name, svg):
 
 
 def fig1_tests():
-    t = [1.50, 2.45, -0.36, 0.69, 1.78, 1.84, 1.16, -0.95, 2.49, -1.42, 2.29, 1.72, 1.75, 1.14, 1.27, -0.25, 0.25, 1.27, 4.43]
-    save("fig1_tests.svg", bar_chart("19 pre-registered tests run: EWC normal-equivalent t", [str(i) for i in range(1, 20)], {"EWC eq. t": t},
-                                     ylabel="t", hlines=[(1.96, "pass (single test) 1.96", "#c53030"), (3.0, "promotion 3.0", "#805ad5")],
-                                     yfmt=lambda v: f"{v:.2f}", note="2 and 9: same signal. 5-7, 11-12: Bonferroni bar 2.39. 1: judged on NW t (1.85). 19: variance risk premium (replication). 20: not run."))
+    t = [1.50, 2.45, -0.36, 0.69, 1.78, 1.84, 1.16, -0.95, 2.49, -1.42, 2.29, 1.72, 1.75, 1.14, 1.27, -0.25, 0.25, 1.27, 4.43,
+         1.35, 2.25, 2.90, 0.14, 1.24, 1.80, 1.17, 1.56, 2.84, 1.84, 1.91, 3.78]
+    labels = [str(i) for i in range(1, 20)] + [str(i) for i in range(21, 33)]
+    save("fig1_tests.svg", bar_chart("31 pre-registered tests run: EWC normal-equivalent t", labels, {"EWC eq. t": t},
+                                     ylabel="t", hlines=[(1.96, "pass (single test) 1.96", "#c53030"), (2.84, "Bonferroni bar for 22-32: 2.84", "#dd6b20"),
+                                                         (3.0, "", "#805ad5")],
+                                     yfmt=lambda v: f"{v:.2f}", note="Purple: promotion bar 3.0. 2, 9: same signal. 5-7, 11-12: bar 2.39. 19, 21-32: derivatives, calendar. 20: not run."))
 
 
 def fig2_minvar():

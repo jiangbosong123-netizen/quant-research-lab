@@ -95,12 +95,17 @@ Most of the return comes from the **short side** (overpriced stocks underperform
 | **P5a** | P1 without the 5 least liquid shorts | 0.59 | 9.0 % | 17.0 % | −40.7 % | 0.29 % | backtest only |
 | **P5b** | Shorts only + long SPY | 0.92 | 13.9 % | 15.6 % | −33.6 % | 0.19 % | shadow; view only |
 | **P6** | P1 scaled by S&P 500 volatility (max 1.5x) | 0.63 | 9.5 % | 16.3 % | −30.4 % | 0.30 % | backtest only |
+| **P9** | P1 made factor-neutral: risk model + cost-aware optimizer (Part 2's recipe) | 0.23 | 1.0 % | 4.8 % | −13.0 % | 0.15 % | backtest only |
 
 Rule details (all monthly, same costs as P1 unless stated):
 - **P2a**: each side's beta = OLS slope of its equal-weighted daily return on SPY over the last 252 trading days; hedge h = −(β<sub>long</sub> − β<sub>short</sub>) of one side's notional
   in SPY (bought when positive), SPY trades cost 0.05 %. **P2b**: within each two-digit SIC industry, the top and bottom *k* names (*k* ∝ the industry's share of the universe), then the same hedge.
 - **P3a**: last month's names are kept while they stay within rank 100 on their side; the side is then filled to 50 from the top. **P3b**: s = min(1.5, σ\* ÷ σ̂), where σ̂ is the
   annualised volatility of the selected long–short's daily returns over 126 days and σ\* the median of σ̂ to date; both sides are scaled by s (up to 300 % gross).
+- **P9** (added October 2026): Part 2's real-data recipe applied unchanged to the full 2012–2026 history with delisted firms — a Barra-style risk model on 250 days of daily returns,
+  alpha = 0.02 × idiosyncratic volatility × standardised score, and an ADMM optimizer with every exposure (market, beta, size, momentum, volatility, industries) held at zero,
+  at most 2 % per name, 200 % gross and a cost penalty of 0.2 % ÷ 4 on trades; costs are 0.2 % on every unit of weight traded plus borrow. Each month the plain P1 return
+  was first reconciled with the P1 backtest (largest difference 5 × 10⁻⁷).
 - **P4a–d** change one design choice at a time; **P5a** drops the five shorts with the lowest dollar volume (a stand-in for hard-to-borrow names); **P5b** keeps only the shorts and buys SPY
   against their beta; **P6** scales P1 by the S&P 500's 252-day volatility relative to its long-run median.
 
@@ -109,6 +114,8 @@ How to read the table:
   about 1.3× SPY; in a rising market with no funding charge that leg adds return. P4a (longs only, hedged) loses money: the signal's return sits mostly in the short side.
 - **P3a** cuts trading costs by a third but gives up more gross return; **P3b** and **P6** trade return for lower volatility; P6's smaller drawdown largely reflects its 252-day window
   happening to straddle March 2020.
+- **P9 removes the risk and most of the return**: before costs its ratio is 0.61, after costs 0.23; matching P1's volatility would need about 690 % gross. P1's return comes largely
+  from the factor bets it carries. (P9 was added later and is not in the comparison below.)
 - Twelve variants on one history will produce spread like this by chance alone (net-return differences against P1 have t between −2.8 and +1.7). By rule the lab does **not** choose
   the real-money portfolio by backtest returns.
 
