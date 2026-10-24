@@ -74,7 +74,7 @@ For comparison, the surviving signal's mean IC was 0.021–0.023: above the firs
 - A stricter **promotion** label requires t > 3 (following Harvey, Liu & Zhu 2016). No equity signal has been promoted; test #19 (the variance risk premium, a replication of a well-known effect) was,
   and so was #32, an equal-risk composite of the derivatives and calendar round (also a replication; Part 7).
 
-![EWC t-statistics of the 31 tests run](../figures/fig1_tests.svg)
+![EWC t-statistics of the 33 tests run](../figures/fig1_tests.svg)
 
 ## 6. Exploration vs. confirmation
 

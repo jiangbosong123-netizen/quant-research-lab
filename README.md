@@ -26,6 +26,7 @@ The rest of this repository explains how that conclusion was reached, why most i
 | **5. Options, probability & market making** | Black–Scholes and Greeks, binomial trees, implied volatility, delta-hedging P&L, Kelly sizing, a Glosten–Milgrom market-making simulation, classic probability puzzles — plus **the variance risk premium on real 2010–2017 data** | [`docs/05_options_and_market_making.md`](docs/05_options_and_market_making.md), `quantlab/options.py`, `quantlab/probability.py` |
 | **6. The strategy in detail** | The universe rules, the eight-anomaly mispricing signal (formulas, point-in-time rules), the base long–short portfolio and twelve variants (including a factor-neutral version) with their rules and backtests, what drives the returns (factor regression, risk decomposition), and the operating and risk controls | [`docs/06_strategy.md`](docs/06_strategy.md), `quantlab/strategy.py` (the rules as tested functions) |
 | **7. Derivatives** | A pre-registered test of the variance risk premium on 1990–2026 data (with the years already seen excluded), the tradable test that was designed but not run and why, hedging the long–short book with futures vs. calls vs. puts, and a twelve-test round of derivatives and calendar strategies on free data | [`docs/07_derivatives.md`](docs/07_derivatives.md), `quantlab/variance.py` |
+| **8. Combining strategies; two more replications** | Three nearly uncorrelated return streams at equal risk (backtest only), betting against beta in Treasuries, and PCA / Ornstein–Uhlenbeck statistical arbitrage — with what power, costs and execution timing did to each | [`docs/08_more_replications.md`](docs/08_more_replications.md) |
 
 Every module in `quantlab/` has a self-test that checks it against an independent answer
 (closed form vs. numerical solution, brute-force enumeration, finite differences, or Monte Carlo). Run them all, and regenerate every figure, with:
@@ -46,7 +47,7 @@ no market data is redistributed.
 
 32 hypotheses were registered before any data was examined; each had a fixed threshold, test statistic and budget. 31 were run; one (#20) was not, because its data cost more than it was worth to the project.
 
-![EWC t-statistics of the 31 tests run](figures/fig1_tests.svg)
+![EWC t-statistics of the 33 tests run](figures/fig1_tests.svg)
 
 | # | Signal (US large/mid caps unless noted) | Result | Main statistic |
 |---|---|---|---|
@@ -79,8 +80,11 @@ no market data is redistributed.
 | 30 | Hold the S&P 500 on scheduled FOMC announcement days | fail | EWC t 1.84 |
 | 31 | Turn of the month (last day to third trading day) | fail | EWC t 1.91 |
 | 32 | **Equal-risk composite of the nine standalone strategies in #21–31** | **pass, promoted** | EWC t **3.78**; 2018–26 alone 1.37; correlation 0.69 with #19 |
+| 33 | Betting against beta in Treasuries: long levered short maturities, short long maturities (1965–2026, own round, bar 1.96) | fail | EWC t 1.23; 1965–2009 alone 1.82, 2018–26 −0.44 |
+| 34 | Statistical arbitrage: PCA residuals with an Ornstein–Uhlenbeck model, traded daily (1999–2026, own round, bar 1.96) | fail | EWC t −0.06; **2.76 before costs**, −1.64 if executed a day later |
 
 Tests #21–32 are replications of published ideas on free public data; #21 had its own round (bar 1.96) and #22–32 shared a Bonferroni budget of eleven (bar 2.84). Details in [`docs/07_derivatives.md`](docs/07_derivatives.md).
+Tests #33 and #34 are replications too, each in its own round; details in [`docs/08_more_replications.md`](docs/08_more_replications.md).
 
 **The portfolio built on the surviving signal** (50 long / 50 short, equal weight, monthly, 2012-08 → 2026-07, net of 0.2 % one-way costs and 1 %/yr borrow;
 the exact rules, the twelve variants and the risk controls are in [`docs/06_strategy.md`](docs/06_strategy.md)):

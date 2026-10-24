@@ -101,7 +101,7 @@ Both tests pass the 1.96 bar but not the stricter 3 used to mark strong evidence
 
 ## What passed and what failed
 
-Thirty-two tests are in the registry; thirty-one were run. Six passed:
+Thirty-four tests are in the registry; thirty-three were run. Six passed:
 - the mispricing signal, twice (#2 and its survivorship-bias-free re-run #9);
 - the variance risk premium (#19, t 4.4), which is crash-prone insurance selling through an instrument individuals cannot trade (Part 7);
 - from the October 2026 round of derivatives and calendar strategies (Part 7), all replications:
@@ -119,7 +119,14 @@ The rest:
 - **Not run (1)**: put writing with daily hedging, which needed a paid options dataset.
 - **Derivatives and calendar round that failed (8 + 1)**: selling Treasury variance (#21, the only one with real power), selling commodity and emerging-market variance,
   timing the market with the variance premium, two refinements of #19, holding SVXY, commodity speculator positioning, FOMC announcement days and the turn of the month.
+- **Two more replications that failed (Part 8)**: betting against beta in Treasuries (#33, right direction before 2010 but weak, negative since 2018) and daily PCA / OU
+  statistical arbitrage (#34: t 2.8 before costs, costs and a one-day execution delay remove it).
 
-**The latest literature survey** (October 2026) found nothing worth adding:
-- no new free-data signal had a reasonable chance of passing;
-- making the existing signal "safer", for example volatility-managed momentum, mostly helps over long samples before costs, and the gain largely disappears out of sample after costs.
+**The latest literature surveys** (October 2026):
+- no new free-data equity signal had a reasonable chance of passing;
+- making the existing signal "safer", for example volatility-managed momentum, mostly helps over long samples before costs, and the gain largely disappears out of sample after costs;
+- of four Treasury and stock–bond candidates, only one had enough power once costs were counted, and it failed (#33).
+
+**Combining strategies** (P10, backtest only, Part 8): P1, the derivatives-and-calendar composite #32 and the Treasury month-end trade #29, each scaled to the same
+volatility and averaged, gave a return-to-volatility ratio of 1.18 over 2014–2026 against 0.54 for P1 scaled the same way, because the three are nearly uncorrelated.
+Much of that comes from #29, which only just passed; it is a lesson in diversification, not a tradable number.
