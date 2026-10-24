@@ -100,7 +100,7 @@ the exact rules, the twelve variants and the risk controls are in [`docs/06_stra
 
 ## What I took away
 
-1. **Most ideas fail when tested honestly.** One signal survived (tests #2 and its survivorship-free re-run #9); everything else failed. The machinery that produced that number — pre-registration, a registry of every test,
+1. **Most ideas fail when tested honestly.** Of 31 tests run, 25 failed. One equity signal survived (test #2 and its survivorship-free re-run #9); outside equities the variance risk premium passed strongly (#19), and three more passed in the derivatives-and-calendar round (#23, #29, #32), two of them only at the margin — all replications of published ideas, not new alpha. The machinery that produced those numbers — pre-registration, a registry of every test,
    an exploration / confirmation split, HAC standard errors, power analysis — is the real deliverable.
 2. **Construction matters as much as the signal.** On synthetic data, the same weak signal goes from an information ratio of 0.7–1.5 (equal-weight long–short)
    to 1.6–2.7 (factor-neutral, risk-model-optimized), and cost-aware optimization cuts turnover by about four-fifths. On real data the same machinery mainly removed risk
