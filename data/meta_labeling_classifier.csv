@@ -1,0 +1,7 @@
+segment,meta_model,trades,label_rate,auc,log_loss,log_loss_base_rate,share_p_above_half,precision,recall,primary_hit_rate,nw_t_B_minus_A,nw_t_B_minus_D
+meta_train_2022_2023,logistic regression (chosen),34986,0.4069,0.5878,0.6657,0.6757,0.0529,0.4930,0.0641,0.5262,14.283,-0.427
+meta_train_2022_2023,gradient-boosted trees,34986,0.4069,0.6200,0.6536,0.6757,0.1276,0.5733,0.1798,0.5262,14.283,-0.427
+meta_valid_2024,logistic regression (chosen),17566,0.4176,0.5562,0.6750,0.6795,0.0384,0.5045,0.0464,0.5183,14.163,2.257
+meta_valid_2024,gradient-boosted trees,17566,0.4176,0.5494,0.6772,0.6795,0.1241,0.4849,0.1441,0.5183,14.163,2.257
+test_2025_01_2026_09,logistic regression (chosen),30622,0.3962,0.5630,0.6662,0.6714,0.0368,0.4610,0.0429,0.5118,18.996,-0.535
+test_2025_01_2026_09,gradient-boosted trees,30622,0.3962,0.5608,0.6672,0.6714,0.1073,0.4648,0.1259,0.5118,18.996,-0.535

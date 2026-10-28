@@ -130,3 +130,7 @@ The rest:
 **Combining strategies** (P10, backtest only, Part 8): P1, the derivatives-and-calendar composite #32 and the Treasury month-end trade #29, each scaled to the same
 volatility and averaged, gave a return-to-volatility ratio of 1.18 over 2014–2026 against 0.54 for P1 scaled the same way, because the three are nearly uncorrelated.
 Much of that comes from #29, which only just passed; it is a lesson in diversification, not a tradable number.
+
+**Short horizons, as practice** (Parts 9 and 10, not in the registry): a C++ limit order book that matches all 2.1 million checked NASDAQ events of the LOBSTER sample;
+order-book signals that are strong on large-tick stocks and weak on small-tick ones; and on BTC and ETH, intraday rules, four forecasting models (ridge beat an MLP and an LSTM)
+and a meta-labeling filter (tested on new 2025–26 data) — all with some predictability before costs, and none that pays a taker's costs.

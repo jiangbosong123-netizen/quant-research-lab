@@ -1,4 +1,4 @@
-"""Run every module's self-test. Usage: python run_selftests.py   (needs only NumPy)."""
+"""Run every module's self-test. Usage: python run_selftests.py   (needs only NumPy; the C++ order book is compiled and checked too when clang++ or g++ is installed)."""
 import importlib
 import os
 import sys
@@ -6,7 +6,7 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-MODULES = ["factor_test", "strategy", "risk_model", "optimizer", "portfolio_demo", "ml_data", "gbdt", "validation", "ml_demo", "execution", "options", "probability", "variance", "svg"]
+MODULES = ["factor_test", "strategy", "risk_model", "optimizer", "portfolio_demo", "ml_data", "gbdt", "validation", "ml_demo", "execution", "options", "probability", "variance", "orderbook", "microstructure", "meta_labeling", "svg"]
 
 
 def main():

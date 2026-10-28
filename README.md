@@ -27,6 +27,8 @@ The rest of this repository explains how that conclusion was reached, why most i
 | **6. The strategy in detail** | The universe rules, the eight-anomaly mispricing signal (formulas, point-in-time rules), the base long–short portfolio and twelve variants (including a factor-neutral version) with their rules and backtests, what drives the returns (factor regression, risk decomposition), and the operating and risk controls | [`docs/06_strategy.md`](docs/06_strategy.md), `quantlab/strategy.py` (the rules as tested functions) |
 | **7. Derivatives** | A pre-registered test of the variance risk premium on 1990–2026 data (with the years already seen excluded), the tradable test that was designed but not run and why, hedging the long–short book with futures vs. calls vs. puts, and a twelve-test round of derivatives and calendar strategies on free data | [`docs/07_derivatives.md`](docs/07_derivatives.md), `quantlab/variance.py` |
 | **8. Combining strategies; two more replications** | Three nearly uncorrelated return streams at equal risk (backtest only), betting against beta in Treasuries, and PCA / Ornstein–Uhlenbeck statistical arbitrage — with what power, costs and execution timing did to each | [`docs/08_more_replications.md`](docs/08_more_replications.md) |
+| **9. Market microstructure** | A price–time-priority limit order book in **C++17** (21 unit tests, differential testing against a Python reference, and a replay of 2,110,855 real NASDAQ events that all match the official book; ~15 million operations/s, median 42 ns); order-flow imbalance, queue imbalance and the micro-price on the LOBSTER sample; intraday momentum / reversal rules on crypto with a train / test split | [`docs/09_microstructure.md`](docs/09_microstructure.md), `cpp/`, `quantlab/orderbook.py`, `quantlab/microstructure.py` |
+| **10. Deep learning & meta-labeling** | Ridge vs boosted trees vs an MLP and an LSTM (PyTorch) predicting BTC and ETH one hour ahead (the simplest model won; none pays its costs); meta-labeling with triple-barrier labels and bet sizing, tested once on new 2025–26 data — and why a cost-netted label learns volatility instead of direction | [`docs/10_deep_learning_and_meta_labeling.md`](docs/10_deep_learning_and_meta_labeling.md), `quantlab/meta_labeling.py`, `extras/torch_models.py` |
 
 Every module in `quantlab/` has a self-test that checks it against an independent answer
 (closed form vs. numerical solution, brute-force enumeration, finite differences, or Monte Carlo). Run them all, and regenerate every figure, with:
@@ -36,6 +38,9 @@ pip install numpy
 python run_selftests.py
 python make_figures.py
 ```
+
+`run_selftests.py` also compiles the C++ order book (`cpp/`, with `-Wall -Wextra -Wpedantic -Werror`) and diffs it against the Python reference when `clang++` or `g++` is on the path;
+the PyTorch networks of Part 10 have their own self-test (`pip install torch`, then `python extras/torch_models.py`).
 
 Parts 2–5 first check each method on **synthetic data with a known ground truth**, then apply it to **real data from 2010–2017**
 (the years after 2017 are reserved for confirming pre-registered tests). Only aggregate results — monthly portfolio returns, ICs, cost curves, strategy P&L — are included, in `data/`;
@@ -117,6 +122,10 @@ the exact rules, the twelve variants and the risk controls are in [`docs/06_stra
    with skewness −3.3 and single months losing as much as nine average months. The pre-registered test on the other years (#19) passed with t 4.4 — and lost 61 % in September 2008 at a modest size.
 6. **Derivatives are mostly tools.** For the long–short book, an index-futures beta hedge kept most of its benefit after funding costs (Sharpe 0.73–0.75 vs 0.55 unhedged);
    buying calls did worse than the linear hedge, and buying puts hedged a risk the book does not have (Part 7).
+7. **At short horizons, predictability is easy to find and hard to keep.** Order-book imbalance nearly decides the next tick on large-tick stocks; 5-minute crypto returns mean-revert;
+   four models forecast BTC and ETH one hour ahead with positive out-of-sample IC. Every one of them breaks even at one or two basis points per side or less (Parts 9 and 10).
+8. **A filter cannot create an edge.** Meta-labeling looked like a 19-t improvement over trading every hour — but only because it traded 4 % of the time; against a control that trades
+   as often it added nothing, and its cost-netted label had mostly learned volatility (Part 10).
 
 ## License
 

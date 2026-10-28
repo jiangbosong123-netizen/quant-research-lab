@@ -1,0 +1,51 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='720' height='420' viewBox='0 0 720 420'>
+<rect width='100%' height='100%' fill='white'/>
+<text x='360.0' y='24' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='16' font-weight='bold'>Meta-labeling on BTC and ETH hourly trades: Sharpe after 5 bp per side</text>
+<line x1='70' x2='696' y1='350.0' y2='350.0' stroke='#edf2f7'/>
+<text x='62' y='354.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>-15.0</text>
+<line x1='70' x2='696' y1='273.5' y2='273.5' stroke='#edf2f7'/>
+<text x='62' y='277.5' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>-10.0</text>
+<line x1='70' x2='696' y1='197.0' y2='197.0' stroke='#edf2f7'/>
+<text x='62' y='201.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>-5.0</text>
+<line x1='70' x2='696' y1='120.5' y2='120.5' stroke='#edf2f7'/>
+<text x='62' y='124.5' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>0.0</text>
+<line x1='70' x2='696' y1='44.0' y2='44.0' stroke='#edf2f7'/>
+<text x='62' y='48.0' text-anchor='end' font-family='Helvetica, Arial, sans-serif' font-size='11' fill='#4a5568'>5.0</text>
+<rect x='85.7' y='120.5' width='38.4' height='139.7' fill='#2b6cb0'/>
+<text x='104.8' y='272.2' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-9.1</text>
+<rect x='127.4' y='120.5' width='38.4' height='191.4' fill='#dd6b20'/>
+<text x='146.6' y='323.9' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-12.5</text>
+<rect x='169.1' y='120.5' width='38.4' height='216.8' fill='#2f855a'/>
+<text x='188.3' y='349.3' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-14.2</text>
+<text x='148.2' y='368' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11'>A all trades</text>
+<rect x='242.2' y='120.5' width='38.4' height='24.5' fill='#2b6cb0'/>
+<text x='261.3' y='157.0' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-1.6</text>
+<rect x='283.9' y='120.5' width='38.4' height='21.7' fill='#dd6b20'/>
+<text x='303.1' y='154.2' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-1.4</text>
+<rect x='325.6' y='120.5' width='38.4' height='49.3' fill='#2f855a'/>
+<text x='344.8' y='181.8' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-3.2</text>
+<text x='304.8' y='368' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11'>B meta filter</text>
+<rect x='398.6' y='120.5' width='38.4' height='16.6' fill='#2b6cb0'/>
+<text x='417.8' y='149.1' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-1.1</text>
+<rect x='440.4' y='119.0' width='38.4' height='1.5' fill='#dd6b20'/>
+<text x='459.6' y='115.0' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>0.1</text>
+<rect x='482.1' y='120.5' width='38.4' height='33.3' fill='#2f855a'/>
+<text x='501.3' y='165.8' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-2.2</text>
+<text x='461.2' y='368' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11'>C bet sizing</text>
+<rect x='555.1' y='120.5' width='38.4' height='26.5' fill='#2b6cb0'/>
+<text x='574.3' y='159.0' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-1.7</text>
+<rect x='596.9' y='120.5' width='38.4' height='47.3' fill='#dd6b20'/>
+<text x='616.1' y='179.8' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-3.1</text>
+<rect x='638.6' y='120.5' width='38.4' height='50.5' fill='#2f855a'/>
+<text x='657.8' y='183.0' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='10'>-3.3</text>
+<text x='617.8' y='368' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='11'>D big predictions</text>
+<line x1='70' x2='696' y1='120.5' y2='120.5' stroke='#4a5568'/>
+<rect x='82' y='50' width='12' height='12' fill='#2b6cb0'/>
+<text x='100' y='60' font-family='Helvetica, Arial, sans-serif' font-size='12'>meta-train 2022-23</text>
+<rect x='252' y='50' width='12' height='12' fill='#dd6b20'/>
+<text x='270' y='60' font-family='Helvetica, Arial, sans-serif' font-size='12'>meta-valid 2024</text>
+<rect x='422' y='50' width='12' height='12' fill='#2f855a'/>
+<text x='440' y='60' font-family='Helvetica, Arial, sans-serif' font-size='12'>test 2025-01 to 2026-09</text>
+<text transform='translate(16,197.0) rotate(-90)' text-anchor='middle' font-family='Helvetica, Arial, sans-serif' font-size='12'>annualised Sharpe (net)</text>
+<text x='70' y='410' font-family='Helvetica, Arial, sans-serif' font-size='10' fill='#718096'>B, C and D trade 3.7-5.3 % of the hours; their gain over A is saved costs. Test, B vs D: NW t of the difference -0.54.</text>
+</svg>

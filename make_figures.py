@@ -209,11 +209,37 @@ def fig15_hedges():
                                        note="Futures hedge = P2a with funding at T-bill + 0.5 %. Calls/puts priced from the VIX (Black-Scholes) + 2 %. Same history; reported, not evidence."))
 
 
+def fig16_queue_imbalance():
+    rows = _rows("lob_signals.csv")
+    f = Figure("Queue imbalance vs the next mid-price move, NASDAQ 2012-06-21 (morning)", "queue imbalance (bid - ask) / (bid + ask), bin centre",
+               "share of next mid moves that are up", yfmt=pct, xfmt=lambda v: f"{v:g}", legend="top left")
+    xs = [-0.9 + 0.2 * k for k in range(10)]
+    for r in rows:
+        tick = "1-tick spread" if float(r["share_one_tick_spread"]) > 0.5 else "multi-tick spread"
+        f.line(xs, [float(r[f"p_next_up_qi_bin{k}"]) for k in range(1, 11)], label=f"{r['stock']} ({tick}, mean {float(r['mean_spread_cents']):.1f} c)",
+               dashed=float(r["share_one_tick_spread"]) < 0.5)
+    f.hline(0.5, None)
+    f.note("Ten equal-width bins of the top-of-book imbalance, 9:35-12:45. LOBSTER sample data; one day, descriptive only.")
+    save("fig16_queue_imbalance.svg", f.svg())
+
+
+def fig17_meta_labeling():
+    rows = _rows("meta_labeling_policies.csv")
+    pol = [("A all trades (primary only)", "A all trades"), ("B meta filter p>0.5", "B meta filter"), ("C bet sizing 2Phi(z)-1", "C bet sizing"),
+           ("D primary |prediction| at B's share", "D big predictions")]
+    seg = [("meta_train_2022_2023", "meta-train 2022-23"), ("meta_valid_2024", "meta-valid 2024"), ("test_2025_01_2026_09", "test 2025-01 to 2026-09")]
+    get = {(r["segment"], r["policy"]): float(r["sharpe_5bp"]) for r in rows}
+    save("fig17_meta_labeling.svg", bar_chart("Meta-labeling on BTC and ETH hourly trades: Sharpe after 5 bp per side", [lab for _, lab in pol],
+                                              {sl: [get[(s, p)] for p, _ in pol] for s, sl in seg}, ylabel="annualised Sharpe (net)", yfmt=lambda v: f"{v:.1f}",
+                                              note="B, C and D trade 3.7-5.3 % of the hours; their gain over A is saved costs. Test, B vs D: NW t of the difference -0.54."))
+
+
 if __name__ == "__main__":
     np.seterr(divide="ignore", over="ignore", invalid="ignore")
     os.makedirs(OUT, exist_ok=True)
     every = (fig1_tests, fig2_minvar, fig3_construction, fig4_leakage, fig5_frontier, fig6_capacity, fig7_delta_hedge, fig8_fpr, fig9_real,
-             fig10_real_ml, fig11_real_capacity, fig12_real_short_vol, fig13_real_ml_variants, fig14_vrp, fig15_hedges)
+             fig10_real_ml, fig11_real_capacity, fig12_real_short_vol, fig13_real_ml_variants, fig14_vrp, fig15_hedges, fig16_queue_imbalance,
+             fig17_meta_labeling)
     wanted = sys.argv[1:]                                             # e.g. "fig2 fig9" to redraw only those
     for f in every:
         if not wanted or any(f.__name__.startswith(w) for w in wanted):
